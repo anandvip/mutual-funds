@@ -16,7 +16,7 @@ This is not investment advice. Nothing here is an offer, a recommendation, or a 
 
 ## 2. Watchlist
 
-Status is one of: watching, shortlisted, emerging-star, cold storage, dropped. Funds with 12 to 35 months of history may only be labelled emerging-star candidates, never fat-tail. Capture is measured against the Nifty 50 (India's 50-share large-cap index) and against the fund's category median. See the [method manual](../method/method-manual.md) for the four proposed marks.
+Status is one of: watching, shortlisted, emerging-star, cold storage, dropped. Funds with 12 to 35 months of history may only be labelled emerging-star candidates, never fat-tail. Capture is measured against the Nifty 50 (India's 50-share large-cap index) and against the fund's category median. See the [method manual](../method/method-manual.md) for the four v1.1 marks.
 
 | Fund | Category | Status | Skew | Capture (Nifty 50 and category) | Best / worst ratio | Ulcer Index | Risk | Note |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |

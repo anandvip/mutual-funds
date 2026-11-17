@@ -32,4 +32,4 @@ This repository never holds personal amounts, holdings, folio numbers, Permanent
 
 ## Status
 
-The method manual, the fund-metrics format and the weekly-report template are here for review. The pass marks for the fat-tail test are still proposals. The dashboard layout and any live publication wait for agreement.
+The method manual, the fund-metrics format and the weekly-report template are here for review. The pass marks for the fat-tail test are v1.1 (relative marks), set by Vipul on 17 Nov 2026; the 90-day lock timing is to be confirmed. The dashboard layout and any live publication wait for agreement.
