@@ -6,6 +6,13 @@ Fatail Singh's research on capital-growth mutual funds using the fat-tail approa
 
 - [`capgrowfat.md`](capgrowfat.md) is the core-idea reference: a transcript on power laws and fat tails in market returns.
 
+## Daily reports
+
+Published research editions, newest first in the [archive](reports/). Each edition is research only, not investment advice. Figures are percentages, fund metrics and a ₹10 lakh research-allocation model.
+
+- [Latest edition](reports/latest/)
+- [Archive](reports/)
+
 ## Status
 
-Private research repo. The dashboard and folder layout will be added once agreed.
+Public research notes. A fuller dashboard may follow.
