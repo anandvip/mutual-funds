@@ -3,18 +3,93 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Daily mutual-fund report · 20 Nov 2026</title>
-<meta name="description" content="Daily fat-tail mutual-fund research. Research only, not investment advice.">
 <link rel="canonical" href="https://mf.vipulanand.in/reports/daily/2026-11-20/">
+<meta name="description" content="Daily fat-tail mutual-fund research for 20 Nov 2026. Research only, not investment advice.">
 <meta name="edition-date" content="2026-11-20">
-<meta name="edition-label" content="10:00">
-
+<meta name="edition-label" content="11:00">
+<title>Daily mutual-fund report · 20 Nov 2026</title>
 <style>
+
 :root{--ink:#1d2330;--mute:#5d6678;--line:#e3e6ec;--bg:#f7f8fa;--star:#009E73;--keep:#0072B2;--watch:#E69F00;--drop:#D55E00;--hold:#CC79A7;--low:#7a4450}
 *{box-sizing:border-box}
 body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
 main{max-width:1120px;margin:auto;padding:16px}
 .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 14px}
+h1{font-size:1.2rem;margin:.2rem 0 .4rem}
+h2{font-size:1rem;margin:0 0 .55rem}
+.meta{color:var(--mute);font-size:.85rem}
+.draft{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:99px;border:1.5px solid var(--drop);color:var(--drop);margin-right:.4rem}
+.badge{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:99px;border:1.5px solid currentColor;white-space:nowrap;vertical-align:middle}
+.star{color:#0b7a4b}.keep{color:#005a8c}.watch{color:#8a5a00}.drop{color:#9a3b00}.hold{color:#8a3a6e}
+.high{color:#0b7a4b}.medium{color:#005a8c}.low{color:var(--low)}.ref{color:#333}
+.legend{display:flex;flex-wrap:wrap;gap:8px 14px;margin:0 0 10px;font-size:.85rem}
+.legend span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.sw{width:12px;height:12px;display:inline-block;flex:none}
+.sw.star{background:var(--star);clip-path:polygon(50% 0,61% 35%,100% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,0 35%,39% 35%)}
+.sw.keep{background:var(--keep);border-radius:50%}
+.sw.watch{background:var(--watch)}
+.sw.hold{background:var(--hold);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.sw.drop{background:transparent;position:relative;width:12px;height:12px}
+.sw.drop:before,.sw.drop:after{content:"";position:absolute;left:5px;top:0;width:2px;height:12px;background:var(--drop)}
+.sw.drop:before{transform:rotate(45deg)}.sw.drop:after{transform:rotate(-45deg)}
+.sw.n50{border:2px solid #1d2330;border-radius:50%;width:12px;height:12px;background:#fff}
+.chart{width:100%;overflow:auto;-webkit-overflow-scrolling:touch}
+.chart svg{display:block;width:100%;min-width:640px;height:auto}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scrollhint{display:none;color:var(--mute);font-size:.8rem;margin:0 0 6px}
+@media (max-width:720px){.scrollhint{display:block}}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{padding:6px 7px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child,.verdict-cell,.why{text-align:left}
+
+.comp{font-size:.8rem;min-width:960px}
+.comp thead th{white-space:normal;line-height:1.2;vertical-align:bottom}
+.comp .badge{white-space:normal;line-height:1.25}
+.comp thead .grp{display:block;font-size:.68rem;font-weight:700;color:var(--ink);letter-spacing:.01em;margin-bottom:3px}
+.comp th.hist{background:#d9e8f5}
+.comp td.hist{background:#f4f8fb;border-left:2px solid #0072B2}
+.comp th.hist{border-left:2px solid #0072B2}
+.comp th.mgr{background:#f6e6c8}
+.comp td.mgr{background:#faf6f0;border-left:2px solid #8a5a00}
+.comp th.mgr{border-left:2px solid #8a5a00}
+.comp .refrow td.hist{background:#e8eef4}
+.comp .refrow td.mgr{background:#f3eee6}
+.comp td.hist,.comp td.mgr,.comp th.hist,.comp th.mgr{text-align:right}
+.comp th.hist,.comp th.mgr{white-space:normal}
+.comp td.pending{white-space:normal;max-width:7rem}
+.verdict-cell{text-align:left;white-space:normal;min-width:10rem}
+.pending{color:var(--mute)}
+.freeze{font-size:.9rem;margin:.45rem 0 .2rem}
+.appendix{min-width:0}
+.appendix th:first-child,.appendix td:first-child{text-align:left}
+
+th{color:var(--mute);font-weight:600}
+.refrow th,.refrow td{background:#f3f5f8}
+.heat{font-size:.75rem;min-width:860px}
+.heat th,.heat td{padding:4px 5px;text-align:center;border-bottom:none;border-right:1px solid #fff}
+.heat th:first-child,.heat td:first-child{text-align:left;position:sticky;left:0;background:#fff;z-index:1;min-width:7.2rem;border-right:1px solid var(--line)}
+.heat thead th{vertical-align:bottom;line-height:1.15}
+.heat .coltag{display:block;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.heat th.boom{background:#f6e6c8;color:#7a4b00}
+.heat th.badyr{background:#d9e8f5;color:#1d4e7a}
+.heat td.boom{box-shadow:inset 0 3px 0 #b35806}
+.heat td.empty{background:#f0f1f4;color:#5d6678}
+.scale{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--mute);margin:.5rem 0 0;flex-wrap:wrap}
+.scale b{color:var(--ink);font-weight:600}
+.ramp{display:inline-flex;height:10px;width:160px;border:1px solid var(--line);border-radius:4px;overflow:hidden;flex:none}
+.ramp i{flex:1;display:block}
+ul.movers{margin:.2rem 0;padding-left:1.1rem}
+ul.movers li{margin:.45rem 0}
+.src{display:inline-block;font-size:.72rem;font-weight:700;color:var(--mute);border:1px solid var(--line);border-radius:99px;padding:0 7px;margin-right:.2rem}
+details summary{cursor:pointer;font-weight:600}
+dl{margin:.5rem 0}dt{font-weight:600}dd{margin:0 0 .4rem;color:var(--mute)}
+footer{color:var(--mute);font-size:.8rem;text-align:center;padding:8px 8px 20px}
+.note{margin:.5rem 0 0}
+.bigyears{font-size:.8rem;min-width:720px}
+.bigyears th,.bigyears td{white-space:nowrap}
+.bigyears th:first-child,.bigyears td:first-child{white-space:normal;text-align:left;position:sticky;left:0;background:#fff;z-index:1;min-width:8rem}
+.bigyears .refrow th:first-child{background:#f3f5f8}
+.bigyears td .meta{display:inline}
 .site-header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:4px 0 12px}
 .site-header a{color:inherit;text-decoration:none}
 .site-header .brand{font-weight:700;letter-spacing:.01em}
@@ -67,8 +142,6 @@ width:2.1rem;min-width:2.1rem;max-width:2.1rem}
 .tbl table.has-rank th:nth-child(2),.tbl table.has-rank td:nth-child(2){
 min-width:6.5rem;max-width:8.5rem;white-space:normal}
 }
-footer{color:var(--mute);font-size:.8rem;text-align:center;padding:8px 8px 20px}
-a{color:#005a8c}
 </style>
 </head>
 <body>
@@ -81,8 +154,509 @@ a{color:#005a8c}
   </nav>
 </header>
 <p class="disclaimer"><strong>Research only, not investment advice.</strong></p>
-<p class="edition-meta">20 Nov 2026 · Edition: 10:00</p>
-<nav class="toc" aria-label="On this page"><a href="#allocation">Research allocation</a><a href="#report">Full report</a></nav>
+<p class="edition-meta">20 Nov 2026 · Edition: 11:00</p>
+<nav class="toc" aria-label="On this page"><a href="#glance">At a glance</a><a href="#allocation">Research allocation</a><a href="#report">Full report</a></nav>
+<div id="glance">
+
+<section class="card">
+<div class="meta">Mutual funds at a glance · Day 4 · Fri 20 Nov 2026 · concluded 11 AM IST · <a href="2026-11-19-overview.html">← 19 Nov overview</a></div>
+<p class="freeze">Method frozen as of 19 Nov 2026, 8:30 PM IST, until the manager-history rule and all 14 driver maps are settled (target 23 Nov); one clean rerun follows.</p>
+<h1>No verdict, rank or pass count changed. Four more driver maps are done (7 of 14). Two of them carry a red flag, so ABSL PSU Equity and Invesco India Infra drop from Medium to Low confidence: each is one theme that moves as a block. The Nifty 50 rose 12.5% in the 4 weeks to 19 Nov, and 13 of the 14 funds lagged it.</h1>
+<p class="meta">Taken from the 20 Nov report’s key takeaway, with the 9 AM SBI Focused NAV update and the 11 AM conclusion. The charts below use percentages, ratios and calendar-year returns. A separate ₹10 lakh research-allocation model follows the charts.</p>
+<p>A strong verdict with Low confidence is not a buy signal.</p>
+</section>
+
+<section class="card">
+<h2>Growth vs fall</h2>
+<p class="meta">Each fund is a labelled marker. The vertical axis is growth per year (5-year average). The horizontal axis is the worst fall over the fund’s whole history, not just the last 5 years. Left is a smaller fall; right is a deeper fall. The Nifty 50 is the ring, with dashed lines through its position. Marker shape shows the verdict, not colour alone. Tooltips use verdict · confidence. This is the fund-history view. Weekly position trails can be added later from the data block at the foot of this page.</p>
+<div class="legend" aria-hidden="true">
+<span><i class="sw star"></i> Star (star)</span>
+<span><i class="sw keep"></i> Keep (circle)</span>
+<span><i class="sw watch"></i> Watch (square)</span>
+<span><i class="sw hold"></i> Watch, governance hold / Governance hold (triangle)</span>
+<span><i class="sw drop"></i> Drop candidate (cross)</span>
+<span><i class="sw n50"></i> Nifty 50 (ring)</span>
+</div>
+<p class="meta">Map labels are verdict · confidence, for example Star · Low.</p>
+<p class="scrollhint">On a phone, swipe this chart sideways to see every fund.</p>
+<div class="chart"><svg viewBox="0 0 860 520" role="img" aria-labelledby="chartTitle chartDesc" preserveAspectRatio="xMidYMid meet">
+<title id="chartTitle">Growth per year versus worst fall, full history</title>
+<desc id="chartDesc">Each fund is a labelled marker. The Nifty 50 is the ring at 8.5% growth and a 38.4% worst fall. The top-left is the sweet spot: more growth and a smaller fall. Left is a smaller fall; right is a deeper fall.</desc>
+<style>
+  .tick{fill:#5d6678;font:11px system-ui,-apple-system,sans-serif}
+  .axis{fill:#1d2330;font:12px system-ui,-apple-system,sans-serif;font-weight:600}
+  .sweet{fill:#0b7a4b;font:12px system-ui,-apple-system,sans-serif;font-weight:700}
+  .lab{fill:#1d2330;font:11px system-ui,-apple-system,sans-serif;font-weight:650;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+  .mk.star{fill:#009E73;stroke:#034;stroke-width:.6}
+  .mk.keep{fill:#0072B2;stroke:#033;stroke-width:1}
+  .mk.watch{fill:#E69F00;stroke:#5a3a00;stroke-width:1}
+  .mk.hold{fill:#CC79A7;stroke:#5a2450;stroke-width:1}
+  .mk.drop{stroke:#D55E00}
+  .mk.ref{stroke:#1d2330}
+</style>
+<rect x="72" y="44" width="752" height="420" fill="#fbfcfe" stroke="#e3e6ec"/>
+<line x1="128.4" y1="44" x2="128.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="128.4" y="480" text-anchor="middle" class="tick">−15%</text>
+<line x1="222.4" y1="44" x2="222.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="222.4" y="480" text-anchor="middle" class="tick">−20%</text>
+<line x1="316.4" y1="44" x2="316.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="316.4" y="480" text-anchor="middle" class="tick">−25%</text>
+<line x1="410.4" y1="44" x2="410.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="410.4" y="480" text-anchor="middle" class="tick">−30%</text>
+<line x1="504.4" y1="44" x2="504.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="504.4" y="480" text-anchor="middle" class="tick">−35%</text>
+<line x1="598.4" y1="44" x2="598.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="598.4" y="480" text-anchor="middle" class="tick">−40%</text>
+<line x1="692.4" y1="44" x2="692.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="692.4" y="480" text-anchor="middle" class="tick">−45%</text>
+<line x1="786.4" y1="44" x2="786.4" y2="464" stroke="#eef0f4" stroke-width="1"/>
+<text x="786.4" y="480" text-anchor="middle" class="tick">−50%</text>
+<line x1="72" y1="444.0" x2="824" y2="444.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="444.0" text-anchor="end" dominant-baseline="middle" class="tick">6%</text>
+<line x1="72" y1="404.0" x2="824" y2="404.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="404.0" text-anchor="end" dominant-baseline="middle" class="tick">8%</text>
+<line x1="72" y1="364.0" x2="824" y2="364.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="364.0" text-anchor="end" dominant-baseline="middle" class="tick">10%</text>
+<line x1="72" y1="324.0" x2="824" y2="324.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="324.0" text-anchor="end" dominant-baseline="middle" class="tick">12%</text>
+<line x1="72" y1="284.0" x2="824" y2="284.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="284.0" text-anchor="end" dominant-baseline="middle" class="tick">14%</text>
+<line x1="72" y1="244.0" x2="824" y2="244.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="244.0" text-anchor="end" dominant-baseline="middle" class="tick">16%</text>
+<line x1="72" y1="204.0" x2="824" y2="204.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="204.0" text-anchor="end" dominant-baseline="middle" class="tick">18%</text>
+<line x1="72" y1="164.0" x2="824" y2="164.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="164.0" text-anchor="end" dominant-baseline="middle" class="tick">20%</text>
+<line x1="72" y1="124.0" x2="824" y2="124.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="124.0" text-anchor="end" dominant-baseline="middle" class="tick">22%</text>
+<line x1="72" y1="84.0" x2="824" y2="84.0" stroke="#eef0f4" stroke-width="1"/>
+<text x="64" y="84.0" text-anchor="end" dominant-baseline="middle" class="tick">24%</text>
+<line x1="568.3" y1="44" x2="568.3" y2="464" stroke="#333" stroke-width="1" stroke-dasharray="3 4" opacity="0.45"/>
+<line x1="72" y1="394.0" x2="824" y2="394.0" stroke="#333" stroke-width="1" stroke-dasharray="3 4" opacity="0.45"/>
+<text x="82" y="62" class="sweet">Sweet spot: more growth, smaller fall</text>
+<text x="448.0" y="512" text-anchor="middle" class="axis">Worst fall, full history → deeper</text>
+<text x="16" y="254.0" text-anchor="middle" class="axis" transform="rotate(-90 16 254.0)">Growth per year, 5-year average</text>
+<g id="trails"></g>
+<g id="points">
+<g class="pt" data-id="absl-psu">
+<title>ABSL PSU: 23.5% a year, worst fall -33.8%, Keep · Low</title>
+<circle cx="481.8" cy="94.0" r="8" class="mk keep"/>
+<text x="481.8" y="78.0" text-anchor="middle" class="lab">ABSL PSU</text>
+</g>
+<g class="pt" data-id="boi-small-cap">
+<title>BOI Small Cap: 18.7% a year, worst fall -32.4%, Star · Medium</title>
+<path transform="translate(455.5 190.0) scale(0.8)" d="M0,-10 L2.4,-3.1 L9.5,-3.1 L3.8,1.2 L6.0,8.1 L0,4.0 L-6.0,8.1 L-3.8,1.2 L-9.5,-3.1 L-2.4,-3.1 Z" class="mk star"/>
+<text x="455.5" y="206.0" text-anchor="middle" class="lab">BOI Small Cap</text>
+</g>
+<g class="pt" data-id="invesco-infra">
+<title>Invesco Infra: 16.4% a year, worst fall -36.2%, Keep · Low</title>
+<circle cx="527.0" cy="236.0" r="8" class="mk keep"/>
+<text x="545.0" y="248.0" text-anchor="start" class="lab">Invesco Infra</text>
+</g>
+<g class="pt" data-id="boi-mfg">
+<title>BOI Mfg &amp; Infra: 20.7% a year, worst fall -43.5%, Keep · Medium</title>
+<circle cx="664.2" cy="150.0" r="8" class="mk keep"/>
+<text x="654.2" y="134.0" text-anchor="end" class="lab">BOI Mfg &amp; Infra</text>
+</g>
+<g class="pt" data-id="canara-infra">
+<title>Canara Infra: 17.9% a year, worst fall -44.1%, Keep · Medium</title>
+<circle cx="675.5" cy="206.0" r="8" class="mk keep"/>
+<text x="653.5" y="202.0" text-anchor="end" class="lab">Canara Infra</text>
+</g>
+<g class="pt" data-id="sbi-health">
+<title>SBI Healthcare: 20.7% a year, worst fall -30.5%, Star · Low</title>
+<path transform="translate(419.8 150.0) scale(0.8)" d="M0,-10 L2.4,-3.1 L9.5,-3.1 L3.8,1.2 L6.0,8.1 L0,4.0 L-6.0,8.1 L-3.8,1.2 L-9.5,-3.1 L-2.4,-3.1 Z" class="mk star"/>
+<text x="411.8" y="134.0" text-anchor="middle" class="lab">SBI Healthcare</text>
+</g>
+<g class="pt" data-id="bandhan-sc">
+<title>Bandhan Small Cap: 19.5% a year, worst fall -24.3%, Keep · Medium</title>
+<circle cx="303.2" cy="174.0" r="8" class="mk keep"/>
+<text x="303.2" y="158.0" text-anchor="middle" class="lab">Bandhan Small Cap</text>
+</g>
+<g class="pt" data-id="sbi-focused">
+<title>SBI Focused: 10.8% a year, worst fall -32.7%, Watch · Medium</title>
+<rect x="452.2" y="339.0" width="18" height="18" class="mk watch"/>
+<text x="461.2" y="364.0" text-anchor="middle" class="lab">SBI Focused</text>
+</g>
+<g class="pt" data-id="icici-focused">
+<title>ICICI Focused: 15.9% a year, worst fall -34.1%, Watch · Medium</title>
+<rect x="478.5" y="237.0" width="18" height="18" class="mk watch"/>
+<text x="479.5" y="262.0" text-anchor="middle" class="lab">ICICI Focused</text>
+</g>
+<g class="pt" data-id="icici-mid">
+<title>ICICI Mid Cap: 15.7% a year, worst fall -44.0%, Watch · Low</title>
+<rect x="664.6" y="241.0" width="18" height="18" class="mk watch"/>
+<text x="665.6" y="266.0" text-anchor="middle" class="lab">ICICI Mid Cap</text>
+</g>
+<g class="pt" data-id="quant-lm">
+<title>Quant L&amp;M: 15.1% a year, worst fall -45.7%, Watch, governance hold · Low</title>
+<path d="M705.6,252.0 L715.6,272.0 L695.6,272.0 Z" class="mk hold"/>
+<text x="715.6" y="278.0" text-anchor="start" class="lab">Quant L&amp;M</text>
+</g>
+<g class="pt" data-id="quant-infra">
+<title>Quant Infra: 15.8% a year, worst fall -46.0%, Governance hold · Low</title>
+<path d="M711.2,238.0 L721.2,258.0 L701.2,258.0 Z" class="mk hold"/>
+<text x="733.2" y="256.0" text-anchor="start" class="lab">Quant Infra</text>
+</g>
+<g class="pt" data-id="sbi-psu">
+<title>SBI PSU: 23.1% a year, worst fall -47.1%, Drop candidate · Low</title>
+<g class="mk drop"><line x1="722.9" y1="93.0" x2="740.9" y2="111.0" stroke-width="2.4"/><line x1="740.9" y1="93.0" x2="722.9" y2="111.0" stroke-width="2.4"/></g>
+<text x="731.9" y="86.0" text-anchor="middle" class="lab">SBI PSU</text>
+</g>
+<g class="pt" data-id="dsp-value">
+<title>DSP Value: 13.7% a year, worst fall -16.5%, Watch · Low</title>
+<rect x="147.6" y="281.0" width="18" height="18" class="mk watch"/>
+<text x="156.6" y="274.0" text-anchor="middle" class="lab">DSP Value</text>
+</g>
+<g class="pt" data-id="nifty-50">
+<title>Nifty 50: 8.5% a year, worst fall -38.4%, Reference</title>
+<g class="mk ref"><circle cx="568.3" cy="394.0" r="12" fill="none" stroke-width="2"/><circle cx="568.3" cy="394.0" r="2.2" fill="#1d2330"/></g>
+<text x="568.3" y="410.0" text-anchor="middle" class="lab">Nifty 50</text>
+</g>
+</g>
+</svg></div>
+</section>
+
+<section class="card">
+<h2>Calendar-year returns</h2>
+<p class="meta">Direct Growth, year-end to year-end. 2021 and 2023 were the two boom years for most of the list. 2018 was often a weak year. A dash means the fund had not launched, or the year was a partial first year. 2026 year-to-date is to 19 Nov, except DSP Value (18 Nov). Colour is colour-blind friendly (blue for losses, orange for gains), and every cell also shows the number.</p>
+<p class="scrollhint">On a phone, swipe the table sideways.</p>
+<div class="tbl"><table class="heat">
+<thead><tr><th>Fund</th>
+<th>2013</th><th>2014</th><th>2015</th><th>2016</th><th>2017</th>
+<th class="badyr">2018<span class="coltag">often weak</span></th>
+<th>2019</th><th>2020</th>
+<th class="boom">2021<span class="coltag">boom</span></th>
+<th>2022</th>
+<th class="boom">2023<span class="coltag">boom</span></th>
+<th>2024</th><th>2025</th><th>2026 YTD</th>
+</tr></thead><tbody>
+<tr><th scope='row'>ABSL PSU</th>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="badyr empty" >—</td>
+<td class="empty" >—</td>
+<td style="background:#f2f4f5;color:#1d2330">-0.5</td>
+<td class="boom" style="background:#e49c4b;color:#1d2330">39.9</td>
+<td style="background:#fbbc6c;color:#1d2330">30.5</td>
+<td class="boom" style="background:#b35806;color:#fff">61.5</td>
+<td style="background:#fad9af;color:#1d2330">15.7</td>
+<td style="background:#f9e0c2;color:#1d2330">11.6</td>
+<td style="background:#f8e6cf;color:#1d2330">8.6</td></tr>
+<tr><th scope='row'>BOI Small Cap</th>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="badyr empty" >—</td>
+<td style="background:#f8ebda;color:#1d2330">6.3</td>
+<td style="background:#bf6816;color:#fff">55.1</td>
+<td class="boom" style="background:#b35806;color:#fff">73.7</td>
+<td style="background:#f7f6f6;color:#1d2330">0.1</td>
+<td class="boom" style="background:#dd9241;color:#1d2330">42.8</td>
+<td style="background:#f8b767;color:#1d2330">32.0</td>
+<td style="background:#b4d6e6;color:#1d2330">-7.2</td>
+<td style="background:#faba6a;color:#1d2330">30.8</td></tr>
+<tr><th scope='row'>Invesco Infra</th>
+<td style="background:#cde2ec;color:#1d2330">-4.5</td>
+<td style="background:#b35806;color:#fff">85.9</td>
+<td style="background:#f0f3f5;color:#1d2330">-0.7</td>
+<td style="background:#f7f2eb;color:#1d2330">2.5</td>
+<td style="background:#c97726;color:#fff">50.7</td>
+<td class="badyr" style="background:#70a8cf;color:#1d2330">-14.3</td>
+<td style="background:#f8e8d3;color:#1d2330">7.8</td>
+<td style="background:#fad5a6;color:#1d2330">17.7</td>
+<td class="boom" style="background:#b9610f;color:#fff">57.2</td>
+<td style="background:#f7efe5;color:#1d2330">3.9</td>
+<td class="boom" style="background:#c36f1d;color:#fff">53.2</td>
+<td style="background:#f0ac5c;color:#1d2330">35.1</td>
+<td style="background:#c0dce9;color:#1d2330">-5.9</td>
+<td style="background:#f8e9d7;color:#1d2330">7.0</td></tr>
+<tr><th scope='row'>BOI Mfg &amp; Infra</th>
+<td style="background:#aad1e4;color:#1d2330">-8.3</td>
+<td style="background:#be6715;color:#fff">55.5</td>
+<td style="background:#f7f3ee;color:#1d2330">1.8</td>
+<td style="background:#f7f2ec;color:#1d2330">2.4</td>
+<td style="background:#b75e0c;color:#fff">58.1</td>
+<td class="badyr" style="background:#2266ac;color:#fff">-21.9</td>
+<td style="background:#f7efe5;color:#1d2330">3.8</td>
+<td style="background:#fcbe6e;color:#1d2330">29.8</td>
+<td class="boom" style="background:#c06b19;color:#fff">54.4</td>
+<td style="background:#f7eee1;color:#1d2330">4.7</td>
+<td class="boom" style="background:#d48635;color:#1d2330">46.4</td>
+<td style="background:#fcc278;color:#1d2330">27.6</td>
+<td style="background:#f8e4cb;color:#1d2330">9.5</td>
+<td style="background:#fad7a9;color:#1d2330">16.9</td></tr>
+<tr><th scope='row'>Canara Infra</th>
+<td style="background:#9dcae0;color:#1d2330">-9.7</td>
+<td style="background:#b35806;color:#fff">70.8</td>
+<td style="background:#f8e8d4;color:#1d2330">7.5</td>
+<td style="background:#f7f1e9;color:#1d2330">3.0</td>
+<td style="background:#e09645;color:#1d2330">41.7</td>
+<td class="badyr" style="background:#4785bc;color:#fff">-18.3</td>
+<td style="background:#f7f0e8;color:#1d2330">3.2</td>
+<td style="background:#f9e4c9;color:#1d2330">10.0</td>
+<td class="boom" style="background:#b85f0d;color:#fff">57.7</td>
+<td style="background:#f9e3c7;color:#1d2330">10.3</td>
+<td class="boom" style="background:#dd9241;color:#1d2330">42.9</td>
+<td style="background:#eba655;color:#1d2330">37.0</td>
+<td style="background:#f7f4f0;color:#1d2330">1.4</td>
+<td style="background:#f7efe4;color:#1d2330">4.0</td></tr>
+<tr><th scope='row'>SBI Healthcare</th>
+<td style="background:#fcc47d;color:#1d2330">26.6</td>
+<td style="background:#b75d0b;color:#fff">58.3</td>
+<td style="background:#fcc073;color:#1d2330">28.7</td>
+<td style="background:#7eb4d5;color:#1d2330">-12.9</td>
+<td style="background:#f7f0e7;color:#1d2330">3.3</td>
+<td class="badyr" style="background:#a6cfe3;color:#1d2330">-8.8</td>
+<td style="background:#f7f6f4;color:#1d2330">0.5</td>
+<td style="background:#b35806;color:#fff">67.7</td>
+<td class="boom" style="background:#fbce94;color:#1d2330">21.5</td>
+<td style="background:#c9e0eb;color:#1d2330">-5.0</td>
+<td class="boom" style="background:#e59d4c;color:#1d2330">39.7</td>
+<td style="background:#db8f3e;color:#1d2330">43.7</td>
+<td style="background:#e0ebf1;color:#1d2330">-2.5</td>
+<td style="background:#fcbf72;color:#1d2330">29.1</td></tr>
+<tr><th scope='row'>Bandhan Small Cap</th>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="badyr empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="boom" style="background:#be6715;color:#fff">55.4</td>
+<td style="background:#cce2ec;color:#1d2330">-4.6</td>
+<td class="boom" style="background:#bd6614;color:#fff">55.8</td>
+<td style="background:#d78a39;color:#1d2330">45.2</td>
+<td style="background:#f7f6f6;color:#1d2330">0.1</td>
+<td style="background:#f9e1c3;color:#1d2330">11.3</td></tr>
+<tr><th scope='row'>SBI Focused</th>
+<td style="background:#abd1e4;color:#1d2330">-8.2</td>
+<td style="background:#b55b09;color:#fff">59.1</td>
+<td style="background:#f8ecde;color:#1d2330">5.4</td>
+<td style="background:#f7f1e8;color:#1d2330">3.1</td>
+<td style="background:#d58736;color:#1d2330">46.0</td>
+<td class="badyr" style="background:#ddeaf0;color:#1d2330">-2.8</td>
+<td style="background:#fad6a8;color:#1d2330">17.2</td>
+<td style="background:#fad8ae;color:#1d2330">15.8</td>
+<td class="boom" style="background:#d98c3b;color:#1d2330">44.5</td>
+<td style="background:#b1d4e5;color:#1d2330">-7.6</td>
+<td class="boom" style="background:#fbca8c;color:#1d2330">23.3</td>
+<td style="background:#fad4a4;color:#1d2330">18.1</td>
+<td style="background:#fad7ab;color:#1d2330">16.6</td>
+<td style="background:#f8e6cf;color:#1d2330">8.6</td></tr>
+<tr><th scope='row'>ICICI Focused</th>
+<td class="empty" >—</td>
+<td style="background:#e29948;color:#1d2330">40.7</td>
+<td style="background:#d1e4ed;color:#1d2330">-4.1</td>
+<td style="background:#f9e0bf;color:#1d2330">12.1</td>
+<td style="background:#fbc785;color:#1d2330">24.9</td>
+<td class="badyr" style="background:#e7eff3;color:#1d2330">-1.7</td>
+<td style="background:#f7f4f0;color:#1d2330">1.4</td>
+<td style="background:#fcc580;color:#1d2330">26.0</td>
+<td class="boom" style="background:#e9a352;color:#1d2330">37.8</td>
+<td style="background:#f8e8d5;color:#1d2330">7.4</td>
+<td class="boom" style="background:#fcbe6e;color:#1d2330">29.9</td>
+<td style="background:#fcc177;color:#1d2330">28.0</td>
+<td style="background:#fad7aa;color:#1d2330">16.7</td>
+<td style="background:#f7f2ec;color:#1d2330">2.3</td></tr>
+<tr><th scope='row'>ICICI Mid Cap</th>
+<td style="background:#f8ebdc;color:#1d2330">5.8</td>
+<td style="background:#b35806;color:#fff">88.5</td>
+<td style="background:#f8ebdb;color:#1d2330">6.1</td>
+<td style="background:#f8ecdc;color:#1d2330">5.7</td>
+<td style="background:#d98c3b;color:#1d2330">44.5</td>
+<td class="badyr" style="background:#9dcae0;color:#1d2330">-9.8</td>
+<td style="background:#f7f6f5;color:#1d2330">0.4</td>
+<td style="background:#fbd09a;color:#1d2330">20.2</td>
+<td class="boom" style="background:#d58635;color:#1d2330">46.2</td>
+<td style="background:#f7efe4;color:#1d2330">4.1</td>
+<td class="boom" style="background:#f3b060;color:#1d2330">33.9</td>
+<td style="background:#fcc176;color:#1d2330">28.1</td>
+<td style="background:#f9e0c0;color:#1d2330">11.9</td>
+<td style="background:#f8ebdc;color:#1d2330">5.9</td></tr>
+<tr><th scope='row'>Quant L&amp;M</th>
+<td style="background:#b7d7e7;color:#1d2330">-6.9</td>
+<td style="background:#b35806;color:#fff">65.6</td>
+<td style="background:#fad3a1;color:#1d2330">18.8</td>
+<td style="background:#f9ddba;color:#1d2330">13.3</td>
+<td style="background:#f5b363;color:#1d2330">33.0</td>
+<td class="badyr" style="background:#aed3e5;color:#1d2330">-7.9</td>
+<td style="background:#f7f0e6;color:#1d2330">3.6</td>
+<td style="background:#fcbf72;color:#1d2330">29.0</td>
+<td class="boom" style="background:#e69e4d;color:#1d2330">39.3</td>
+<td style="background:#fadab2;color:#1d2330">15.0</td>
+<td class="boom" style="background:#f2af5f;color:#1d2330">34.3</td>
+<td style="background:#fad29e;color:#1d2330">19.4</td>
+<td style="background:#f0f3f5;color:#1d2330">-0.7</td>
+<td style="background:#f9debd;color:#1d2330">12.7</td></tr>
+<tr><th scope='row'>Quant Infra</th>
+<td style="background:#68a2cb;color:#1d2330">-15.0</td>
+<td style="background:#ba6210;color:#fff">57.0</td>
+<td style="background:#dbe9f0;color:#1d2330">-3.0</td>
+<td style="background:#c4deea;color:#1d2330">-5.5</td>
+<td style="background:#c5701f;color:#fff">52.7</td>
+<td class="badyr" style="background:#77aed2;color:#1d2330">-13.6</td>
+<td style="background:#f7eee2;color:#1d2330">4.4</td>
+<td style="background:#f2b05f;color:#1d2330">34.1</td>
+<td class="boom" style="background:#b35806;color:#fff">84.2</td>
+<td style="background:#fad9b1;color:#1d2330">15.3</td>
+<td class="boom" style="background:#f1ae5d;color:#1d2330">34.7</td>
+<td style="background:#fcc683;color:#1d2330">25.4</td>
+<td style="background:#dfebf1;color:#1d2330">-2.6</td>
+<td style="background:#f8e4cb;color:#1d2330">9.6</td></tr>
+<tr><th scope='row'>SBI PSU</th>
+<td style="background:#73abd0;color:#1d2330">-14.0</td>
+<td style="background:#de9443;color:#1d2330">42.2</td>
+<td style="background:#95c6de;color:#1d2330">-10.6</td>
+<td style="background:#fad7aa;color:#1d2330">16.7</td>
+<td style="background:#fbcc8f;color:#1d2330">22.6</td>
+<td class="badyr" style="background:#2166ac;color:#fff">-22.9</td>
+<td style="background:#f8ead9;color:#1d2330">6.5</td>
+<td style="background:#a0cce1;color:#1d2330">-9.4</td>
+<td class="boom" style="background:#f3b160;color:#1d2330">33.8</td>
+<td style="background:#fcbc6c;color:#1d2330">30.4</td>
+<td class="boom" style="background:#bd6614;color:#fff">55.7</td>
+<td style="background:#fbc785;color:#1d2330">24.9</td>
+<td style="background:#f9dfbe;color:#1d2330">12.4</td>
+<td style="background:#f7efe5;color:#1d2330">3.8</td></tr>
+<tr><th scope='row'>DSP Value</th>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="badyr empty" >—</td>
+<td class="empty" >—</td>
+<td class="empty" >—</td>
+<td class="boom" style="background:#f8b767;color:#1d2330">32.0</td>
+<td style="background:#e6eef2;color:#1d2330">-1.8</td>
+<td class="boom" style="background:#faba6a;color:#1d2330">30.9</td>
+<td style="background:#fbcd93;color:#1d2330">21.8</td>
+<td style="background:#f9dfbe;color:#1d2330">12.4</td>
+<td style="background:#f8ebda;color:#1d2330">6.2</td></tr>
+<tr class="refrow"><th scope='row'>Nifty 50</th>
+<td style="background:#f8ecdd;color:#1d2330">5.5</td>
+<td style="background:#f8b767;color:#1d2330">32.0</td>
+<td style="background:#d9e8ef;color:#1d2330">-3.2</td>
+<td style="background:#f7efe4;color:#1d2330">4.1</td>
+<td style="background:#fcbe6e;color:#1d2330">29.8</td>
+<td class="badyr" style="background:#f7eee3;color:#1d2330">4.3</td>
+<td style="background:#f9ddba;color:#1d2330">13.3</td>
+<td style="background:#fad9af;color:#1d2330">15.6</td>
+<td class="boom" style="background:#fcc683;color:#1d2330">25.3</td>
+<td style="background:#f8ecde;color:#1d2330">5.4</td>
+<td class="boom" style="background:#fbcf97;color:#1d2330">21.0</td>
+<td style="background:#f8e4ca;color:#1d2330">9.8</td>
+<td style="background:#f9e0c1;color:#1d2330">11.7</td>
+<td style="background:#e9f0f3;color:#1d2330">-1.5</td></tr>
+</tbody></table></div>
+<div class="scale"><b>Scale</b> <span class="ramp"><i style="background:#2166ac"></i><i style="background:#7eb4d5"></i><i style="background:#f4f5f6"></i><i style="background:#fbbc6c"></i><i style="background:#b35806"></i></span><span>−20% and below</span><span>0%</span><span>+60% and above</span></div>
+</section>
+
+<section class="card">
+<h2>Side by side, with the Nifty 50 as the reference</h2>
+<p class="meta">Two views, never mixed. <b>Fund history</b> is growth per year (5-year average) and the worst fall over the whole history, as an investor in the fund experienced them. Growth ÷ fall uses those two fund-history figures (5-year growth per year ÷ worst fall over full history). <b>Current manager</b> is the manager’s years on the fund, plus growth per year and worst fall during that tenure. For SBI Healthcare and SBI Focused, years are the Direct-plan record from 2 Jan 2013, because the managers started before Direct plans existed. Quant Large &amp; Mid Cap is 1.8y from 3 Feb 2025, with Tandon as primary. DSP Value’s manager growth is a total, not a yearly rate, because the tenure is under one year.</p>
+<p class="scrollhint">On a phone, swipe the table sideways to see both views.</p>
+<div class="tbl"><table class="comp">
+<thead>
+<tr>
+<th>Fund</th>
+<th>Verdict · confidence</th>
+<th class="hist"><span class="grp">Fund history</span>Growth per year (5y)</th>
+<th class="hist"><span class="grp">Fund history</span>Worst fall</th>
+<th class="hist"><span class="grp">Fund history</span>Growth ÷ fall</th>
+<th class="mgr"><span class="grp">Current manager</span>Years on the fund</th>
+<th class="mgr"><span class="grp">Current manager</span>Growth per year</th>
+<th class="mgr"><span class="grp">Current manager</span>Worst fall</th>
+<th>Top-2 share</th>
+</tr>
+</thead>
+<tbody>
+<tr class="refrow"><th scope="row">Nifty 50 proxy</th><td class="verdict-cell"><span class="badge ref">Reference</span> UTI Nifty 50 Index Direct (120716)</td><td class="hist">8.5%</td><td class="hist">−38.4%</td><td class="hist">0.22</td><td class="mgr">—</td><td class="mgr">—</td><td class="mgr">—</td><td>62%</td></tr><tr><th scope="row">ABSL PSU Equity</th><td class="verdict-cell"><span class="badge keep">Keep · Low</span> <span class="meta">Best pillar score, but one policy-driven theme (driver flag) and under 5 years with this manager</span></td><td class="hist">23.5%</td><td class="hist">−33.8%</td><td class="hist">0.70</td><td class="mgr">4.2 years</td><td class="mgr">+24.6%</td><td class="mgr">−26.8%</td><td>61%</td></tr><tr><th scope="row">BOI Small Cap</th><td class="verdict-cell"><span class="badge star">Star · Medium</span> <span class="meta">Strong on tail protection and upside; manager only 2.1 years</span></td><td class="hist">18.7%</td><td class="hist">−32.4%</td><td class="hist">0.58</td><td class="mgr">2.1 years</td><td class="mgr">+8.0%</td><td class="mgr">−27.1%</td><td>82%</td></tr><tr><th scope="row">Invesco India Infra</th><td class="verdict-cell"><span class="badge keep">Keep · Low</span> <span class="meta">Good numbers, but one capex theme, 56% small caps (driver flag); manager 1.7 years</span></td><td class="hist">16.4%</td><td class="hist">−36.2%</td><td class="hist">0.45</td><td class="mgr">1.7 years</td><td class="mgr">+15.6%</td><td class="mgr">−17.8%</td><td>76%</td></tr><tr><th scope="row">BOI Mfg &amp; Infra</th><td class="verdict-cell"><span class="badge keep">Keep · Medium</span> <span class="meta">Broad mix of holdings, no driver flag; deep 2018–20 fall in its history</span></td><td class="hist">20.7%</td><td class="hist">−43.5%</td><td class="hist">0.48</td><td class="mgr">4.1 years</td><td class="mgr">+25.0%</td><td class="mgr">−24.2%</td><td>68%</td></tr><tr><th scope="row">Canara Robeco Infra</th><td class="verdict-cell"><span class="badge keep">Keep · Medium</span> <span class="meta">Pillars give High; stepped down for one capex theme</span></td><td class="hist">17.9%</td><td class="hist">−44.1%</td><td class="hist">0.41</td><td class="mgr">5.4 years</td><td class="mgr">+20.6%</td><td class="mgr">−23.3%</td><td>66%</td></tr><tr><th scope="row">SBI Healthcare Opps</th><td class="verdict-cell"><span class="badge star">Star · Low</span> <span class="meta">Highest skew; one sector with a dated US tariff step-up (Aug 2028)</span></td><td class="hist">20.7%</td><td class="hist">−30.5%</td><td class="hist">0.68</td><td class="mgr">13.9y (direct-plan data; manager since Jun 2011)</td><td class="mgr">+18.4%</td><td class="mgr">−30.5%</td><td>86%</td></tr><tr><th scope="row">Bandhan Small Cap</th><td class="verdict-cell"><span class="badge keep">Keep · Medium</span> <span class="meta">4/4, no driver flag; very large for a small cap</span></td><td class="hist">19.5%</td><td class="hist">−24.3%</td><td class="hist">0.80</td><td class="mgr">3.8 years</td><td class="mgr">+28.9%</td><td class="mgr">−22.8%</td><td>73%</td></tr><tr><th scope="row">SBI Focused</th><td class="verdict-cell"><span class="badge watch">Watch · Medium</span> <span class="meta">Proven, but weak right tail (fails skew); likely drop on 8 Dec</span></td><td class="hist">10.8%</td><td class="hist">−32.7%</td><td class="hist">0.33</td><td class="mgr">13.9y (direct-plan data; manager since May 2009)</td><td class="mgr">+15.7%</td><td class="mgr">−32.7%</td><td>71%</td></tr><tr><th scope="row">ICICI Pru Focused</th><td class="verdict-cell"><span class="badge watch">Watch · Medium</span> <span class="meta">4/4 but weak tail protection: worst 12-month fall −24.7% vs peers −23.6%; financials are 42.12% of the fund</span></td><td class="hist">15.9%</td><td class="hist">−34.1%</td><td class="hist">0.47</td><td class="mgr">4.3 years</td><td class="mgr">+18.7%</td><td class="mgr">−16.8%</td><td>55%</td></tr><tr><th scope="row">ICICI Pru Mid Cap</th><td class="verdict-cell"><span class="badge watch">Watch · Low</span> <span class="meta">Falls deeper than peers; beats its category in only 45% of windows</span></td><td class="hist">15.7%</td><td class="hist">−44.0%</td><td class="hist">0.36</td><td class="mgr">4.3 years</td><td class="mgr">+19.2%</td><td class="mgr">−21.3%</td><td>63%</td></tr><tr><th scope="row">Quant Large &amp; Mid Cap</th><td class="verdict-cell"><span class="badge hold">Watch, governance hold · Low</span> <span class="meta">SEBI front-running settlement still not final; deep history falls</span></td><td class="hist">15.1%</td><td class="hist">−45.7%</td><td class="hist">0.33</td><td class="mgr">1.8y (since 3 Feb 2025, Tandon as primary)</td><td class="mgr">+10.1%</td><td class="mgr">−15.8%</td><td>67%</td></tr><tr><th scope="row">Quant Infrastructure</th><td class="verdict-cell"><span class="badge hold">Governance hold · Low</span> <span class="meta">Same governance flag; deepest falls among infra funds</span></td><td class="hist">15.8%</td><td class="hist">−46.0%</td><td class="hist">0.34</td><td class="mgr">1.8 years</td><td class="mgr">+10.5%</td><td class="mgr">−19.0%</td><td>73%</td></tr><tr><th scope="row">SBI PSU</th><td class="verdict-cell"><span class="badge drop">Drop candidate · Low</span> <span class="meta">Fails v1.1 (2/4); falls harder than peers</span></td><td class="hist">23.1%</td><td class="hist">−47.1%</td><td class="hist">0.49</td><td class="mgr">2.5 years</td><td class="mgr">+1.8%</td><td class="mgr">−24.1%</td><td>55%</td></tr><tr><th scope="row">DSP Value</th><td class="verdict-cell"><span class="badge watch">Watch · Low</span> <span class="meta">Never tested by a real fall under the new manager</span></td><td class="hist">13.7%</td><td class="hist">−16.5%</td><td class="hist">0.83</td><td class="mgr">0.5 years</td><td class="mgr">+4.8% total (under 1 year)</td><td class="mgr">−7.1%</td><td>65%</td></tr>
+</tbody>
+</table></div>
+<p class="note">Most of the list leans on two boom years (2021 and 2023). Nine of the 14 funds, and the Nifty 50 itself at 62%, sit in a 60–75% Top-2 share band. The useful contrast is SBI Healthcare Opps (86%) and BOI Small Cap (82%) at the top, against ICICI Pru Focused and SBI PSU (both 55%) at the bottom. Invesco India Infra is just above the band at 76%.</p>
+</section>
+<section class="card">
+<h2>Big years</h2>
+<p class="meta">Best, 2nd-best and weakest calendar years in the 2021–2025 window only, picked from the calendar-year table in the 20 Nov report, not recomputed. 2026 year-to-date is to 19 Nov, except DSP Value (18 Nov). If the weakest year in that window still has a plus sign, the row also says “no losing year”.</p>
+<p class="scrollhint">On a phone, swipe the table sideways.</p>
+<div class="tbl"><table class="bigyears">
+<thead>
+<tr><th>Fund</th><th>Best year</th><th>2nd-best year</th><th>Weakest year</th><th>Top-2 share</th><th>2026 YTD</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">ABSL PSU Equity</th><td>+61.5% (2023)</td><td>+39.9% (2021)</td><td>+11.6% (2025) <span class="meta">no losing year</span></td><td>61%</td><td>+8.6%</td></tr><tr><th scope="row">BOI Small Cap</th><td>+73.7% (2021)</td><td>+42.8% (2023)</td><td>−7.2% (2025)</td><td>82%</td><td>+30.8%</td></tr><tr><th scope="row">Invesco India Infra</th><td>+57.2% (2021)</td><td>+53.2% (2023)</td><td>−5.9% (2025)</td><td>76%</td><td>+7.0%</td></tr><tr><th scope="row">BOI Mfg &amp; Infra</th><td>+54.4% (2021)</td><td>+46.4% (2023)</td><td>+4.7% (2022) <span class="meta">no losing year</span></td><td>68%</td><td>+16.9%</td></tr><tr><th scope="row">Canara Robeco Infra</th><td>+57.7% (2021)</td><td>+42.9% (2023)</td><td>+1.4% (2025) <span class="meta">no losing year</span></td><td>66%</td><td>+4.0%</td></tr><tr><th scope="row">SBI Healthcare Opps</th><td>+43.7% (2024)</td><td>+39.7% (2023)</td><td>−5.0% (2022)</td><td>86%</td><td>+29.1%</td></tr><tr><th scope="row">Bandhan Small Cap</th><td>+55.8% (2023)</td><td>+55.4% (2021)</td><td>−4.6% (2022)</td><td>73%</td><td>+11.3%</td></tr><tr><th scope="row">SBI Focused</th><td>+44.5% (2021)</td><td>+23.3% (2023)</td><td>−7.6% (2022)</td><td>71%</td><td>+8.6%</td></tr><tr><th scope="row">ICICI Pru Focused</th><td>+37.8% (2021)</td><td>+29.9% (2023)</td><td>+7.4% (2022) <span class="meta">no losing year</span></td><td>55%</td><td>+2.3%</td></tr><tr><th scope="row">ICICI Pru Mid Cap</th><td>+46.2% (2021)</td><td>+33.9% (2023)</td><td>+4.1% (2022) <span class="meta">no losing year</span></td><td>63%</td><td>+5.9%</td></tr><tr><th scope="row">Quant Large &amp; Mid Cap</th><td>+39.3% (2021)</td><td>+34.3% (2023)</td><td>−0.7% (2025)</td><td>67%</td><td>+12.7%</td></tr><tr><th scope="row">Quant Infrastructure</th><td>+84.2% (2021)</td><td>+34.7% (2023)</td><td>−2.6% (2025)</td><td>73%</td><td>+9.6%</td></tr><tr><th scope="row">SBI PSU</th><td>+55.7% (2023)</td><td>+33.8% (2021)</td><td>+12.4% (2025) <span class="meta">no losing year</span></td><td>55%</td><td>+3.8%</td></tr><tr><th scope="row">DSP Value</th><td>+32.0% (2021)</td><td>+30.9% (2023)</td><td>−1.8% (2022)</td><td>65%</td><td>+6.2%</td></tr><tr class="refrow"><th scope="row">Nifty 50 proxy</th><td>+25.3% (2021)</td><td>+21.0% (2023)</td><td>+5.4% (2022) <span class="meta">no losing year</span></td><td>62%</td><td>−1.5%</td></tr>
+</tbody>
+</table></div>
+<p class="note">No losing year in 2021–2025: ABSL PSU Equity, BOI Mfg & Infra, Canara Robeco Infra, ICICI Pru Focused, ICICI Pru Mid Cap, SBI PSU, Nifty 50.</p>
+</section>
+
+<section class="card">
+<h2>What moves each fund</h2>
+<p class="meta">Seven of 14 driver maps are done (ABSL PSU Equity, Invesco India Infra, BOI Mfg &amp; Infra and Bandhan Small Cap added today; BOI Small Cap, SBI Healthcare Opps and Canara Robeco Infra were done on 19 Nov). Those lines come from the driver files. The other seven use the report’s “what to watch now” line, and are marked as such. These are tendencies, not predictions.</p>
+<ul class="movers">
+<li><b>ABSL PSU Equity.</b> <span class="src">From the driver map</span> One policy-driven theme: every holding is a government company, so elections and government share sales move the whole fund. On election-result day (4 Jun 2024) it fell −14.6% in one day while the Nifty 50 fell −5.8%. SBI is 17.24% of the fund. Share sales are back on the table.</li><li><b>BOI Small Cap.</b> <span class="src">From the driver map</span> No red flag (amber: small-cap valuation premium and leveraged crowding). It held up in the Oct small-cap slide better than in Jan–Feb 2025, but still lags the large-cap rally (+5.3% in 4 weeks vs Nifty +12.5%). The manager’s record is only 2.1 years.</li><li><b>Invesco India Infra.</b> <span class="src">From the driver map</span> One cyclical theme (industrial capex) with 56% in small caps. Still −9.2% below its Jun 2026 peak and weakest on 3 months (−7.1%). It falls first if the small-cap margin-loan unwind resumes.</li><li><b>BOI Mfg &amp; Infra.</b> <span class="src">From the driver map</span> No red flag (amber: capex and credit sensitivity; 10.3% cash at end-Oct). The holdings is spread across manufacturing and infrastructure. It was at an all-time high on 19 Nov while holding that cash. Watch where the cash goes.</li><li><b>Canara Robeco Infra.</b> <span class="src">From the driver map</span> One cyclical theme (government and private capex, sensitive to rates and credit). Rate-sensitive after the Oct hike. It lagged the November large-cap rally.</li><li><b>SBI Healthcare Opps.</b> <span class="src">From the driver map</span> A one-sector pharma fund. US generic pricing and USFDA action have driven its long slumps. It now faces a US tariff step-up on generic drugs from Aug 2028. It has held up in market sell-offs, and it is the only fund ahead of the Nifty over 4 weeks (+13.1%).</li><li><b>Bandhan Small Cap.</b> <span class="src">From the driver map</span> No red flag (amber: fund size and fast inflows). It took a large share of small-cap fund inflows in Oct. Watch whether inflows slow.</li><li><b>SBI Focused.</b> <span class="src">Driver map pending · what to watch now</span> 5-year growth is only +10.8%. Fails skew. Likely drop on 8 Dec unless its right tail improves.</li><li><b>ICICI Pru Focused.</b> <span class="src">Driver map pending · what to watch now</span> Day 2. Financial services are 42.12% of the fund (ICICI Bank 9.19%, Axis Bank 7.69%). Its worst 12-month fall is −24.7% vs peers −23.6%.</li><li><b>ICICI Pru Mid Cap.</b> <span class="src">Driver map pending · what to watch now</span> Worst 12 months −32.5% vs peers −24.4%; −4.5% over 3 months.</li><li><b>Quant Large &amp; Mid Cap.</b> <span class="src">Driver map pending · what to watch now</span> Still no final SEBI settlement order in the Tandon matter. The fund runs about 23 stocks, with a single stock near 10%.</li><li><b>Quant Infrastructure.</b> <span class="src">Driver map pending · what to watch now</span> Still no final SEBI settlement order in the Tandon matter. The fund runs about 22 stocks, with a single stock near 10%.</li><li><b>SBI PSU.</b> <span class="src">Driver map pending · what to watch now</span> Fails v1.1 (2/4). Formal decision on 8 Dec under the rule.</li><li><b>DSP Value.</b> <span class="src">Driver map pending · what to watch now</span> The new manager has not yet faced a real fall. TER now 1.44% (Oct), still the highest direct TER on the list.</li>
+</ul>
+</section>
+
+<section class="card">
+<h2>As of, and sources</h2>
+<p>NAVs are as of 19 Nov 2026, except DSP Value, which is as of 18 Nov. The report was concluded at about 11:08 AM IST on 20 Nov 2026. SBI Focused’s 19 Nov NAV was added in the 9 AM run (about 9:05 AM IST) and supersedes the 18 Nov figures used in the 2 AM tables: 1-year +10.3%, 3-year +16.0%, 5-year +10.8%, since 2 Jan 2013 +15.7%, 2026 year-to-date +8.6%. Ratios for SBI Focused were unchanged (0.33 full history, 0.51 over the same 5 years). DSP Value was still at its 18 Nov NAV at the 11 AM check (about 11:06 AM IST).</p>
+<ul class="meta">
+<li>Fat-tail report, 20 Nov 2026 (Day 4), concluded 11 AM IST, including the 9 AM SBI Focused NAV update: figures, the key takeaway, current-manager growth and fall, Top-2 share, calendar years and the appendix. Layout follows the format Vipul approved at 8:30 PM on 19 Nov.</li>
+<li>NAVs: api.mfapi.in (AMFI mirror) plus AMFI NAVAll.txt for 19 Nov NAVs that mfapi.in had not posted at 2:13 AM IST. Scripts named in the report: data/m2_cut1121.py (marks), data/pillars_cut1121.py, data/assess_1120.py, data/tables_1120.py, data/mdtables_1120.py. Output: data/2026-11-20-metrics.json. Ledger: data/ledger.csv.</li>
+<li>Top-2 share: share of 2021–2025 compounded growth from the two best calendar years, on a log basis, as stated in the 20 Nov report.</li>
+<li>Driver maps: data/drivers/aditya-birla-sun-life-psu-equity.md, data/drivers/invesco-india-infrastructure.md, data/drivers/bank-of-india-manufacturing-infrastructure.md, data/drivers/bandhan-small-cap.md (complete v1, 20 Nov 2026); data/drivers/bank-of-india-small-cap.md, data/drivers/sbi-healthcare-opportunities.md, data/drivers/canara-robeco-infrastructure.md (complete v1, 19 Nov 2026). The other 7 funds are pending. Status table: data/drivers/README.md.</li>
+<li>Glossary: glossary.md in the same research folder.</li>
+</ul>
+</section>
+<section class="card" id="glossary">
+<details><summary>Glossary</summary>
+<dl>
+<dt>AMFI</dt><dd>Association of Mutual Funds in India, the official NAV source.</dd>
+<dt>Amber (driver map)</dt><dd>A risk noted in a driver map that is not strong enough to be a red flag; it does not change the tier.</dd>
+<dt>CAGR / growth per year (5y)</dt><dd>Compound annual growth rate over the trailing 5 years, to the latest NAV. This is a per-year average, not the total 5-year gain.</dd>
+<dt>Current manager</dt><dd>The manager’s years on the fund, and the growth per year and worst fall during that tenure only. For SBI Healthcare (Desai, since Jun 2011) and SBI Focused (Srinivasan, since May 2009), the Direct-plan record from 2 Jan 2013 is used, because the managers started before Direct plans existed. Quant Large &amp; Mid Cap is counted from 3 Feb 2025, with Tandon as primary.</dd>
+<dt>Confidence tier</dt><dd>High, Medium or Low trust in a fund’s verdict, set by the pillars, the length of matched history, stress exposure and driver-map flags. Under 5 years of matched history caps a fund at Medium. A fund never tested by a real fall is capped at Low. A driver-map red flag lowers the tier by one.</dd>
+<dt>Driver map</dt><dd>A per-fund note of what tends to move it (rates, crude, flows, and so on), back-checked against its past rises and falls, with the strength labelled strong, some or weak. A driver map can step a confidence tier down; it never changes rank.</dd>
+<dt>Fund history</dt><dd>The fund’s whole Direct-plan record: growth per year (5-year average) and the worst fall over that whole history, as an investor in the fund experienced them. Never mixed with the current-manager view.</dd>
+<dt>Governance hold</dt><dd>A verdict that pauses a fund pending a regulatory or fund-house issue, whatever its numbers. Quant Large &amp; Mid Cap is labelled “Watch, governance hold”.</dd>
+<dt>Growth-to-fall ratio</dt><dd>5-year growth per year ÷ the absolute value of the worst fall. The main table uses the worst fall over full history.</dd>
+<dt>Keep</dt><dd>Stay on the watchlist and keep observing.</dd>
+<dt>Matched-mandate history</dt><dd>The part of a fund’s record that matches its current mandate and current lead manager. From 19 Nov, it starts on the lead manager’s start date, which is still one of the rule questions with Vipul (Proposal A).</dd>
+<dt>Policy-driven theme</dt><dd>A fund whose holdings share one driver set by government action (for example PSU funds: elections, government share sales), so they rise and fall together even across sectors.</dd>
+<dt>Real fall in tenure</dt><dd>Whether the fund’s category fell 10% or more (peak to trough, month-end category median index) while the current manager was in charge. “No” means the manager is untested. On 20 Nov this was yes for 13 of 14 funds; DSP Value is the exception.</dd>
+<dt>Star</dt><dd>Emerging star: a keep-list fund with a strong tail profile. A Star verdict with Low confidence is not a buy signal.</dd>
+<dt>Survival flag</dt><dd>Triggered if the worst fall or worst 12 months is more than 15 points worse than the Nifty 50. All 14 funds pass on 20 Nov.</dd>
+<dt>Tail protection Unverified</dt><dd>The matched-mandate history never saw a category fall of 10% or more, so tail protection is Unverified and confidence is capped at Low. DSP Value stays in this state.</dd>
+<dt>Top-2 share</dt><dd>The share of a fund’s 2021–2025 compounded growth that came from its two best calendar years (log basis). High means growth from one or two boom years; low means steadier compounding.</dd>
+<dt>Verdict · confidence</dt><dd>The verdict and the confidence tier shown in one cell, for example Star · Low. A strong verdict with Low confidence is not a buy signal.</dd>
+<dt>Watch</dt><dd>Stay on the list, but with a clearer concern than a Keep.</dd>
+</dl>
+</details>
+</section>
+
+<section class="card" id="appendix-recover">
+<details><summary>Appendix: days to recover</summary>
+<p class="meta">Data only; not used in the main view. Days from the peak before the worst fall until NAV got back to that peak, as stated in the 20 Nov report. Peer median is the report’s figure for the same-category median.</p>
+<div class="tbl"><table class="appendix">
+<thead><tr><th>Fund</th><th>Worst-fall peak → trough → recovered</th><th>Days under water</th><th>Peer median</th></tr></thead>
+<tbody>
+<tr><th scope="row">ABSL PSU Equity</th><td>15 Jan 2020 → 24 Mar 2020 → 14 Dec 2020</td><td>334</td><td>302</td></tr><tr><th scope="row">BOI Small Cap</th><td>20 Feb 2020 → 23 Mar 2020 → 7 Aug 2020</td><td>169</td><td>278</td></tr><tr><th scope="row">Invesco India Infra</th><td>20 Feb 2020 → 24 Mar 2020 → 1 Dec 2020</td><td>285</td><td>1,066</td></tr><tr><th scope="row">BOI Mfg &amp; Infra</th><td>15 Jan 2018 → 23 Mar 2020 → 30 Dec 2020</td><td>1,080</td><td>1,021</td></tr><tr><th scope="row">Canara Robeco Infra</th><td>26 Dec 2017 → 23 Mar 2020 → 2 Feb 2021</td><td>1,134</td><td>1,021</td></tr><tr><th scope="row">SBI Healthcare Opps</th><td>23 Oct 2015 → 23 Mar 2020 → 22 Jun 2020</td><td>1,704</td><td>1,021</td></tr><tr><th scope="row">Bandhan Small Cap</th><td>18 Oct 2021 → 20 Jun 2022 → 14 Jun 2023</td><td>604</td><td>180</td></tr><tr><th scope="row">SBI Focused</th><td>20 Feb 2020 → 23 Mar 2020 → 17 Nov 2020</td><td>271</td><td>423</td></tr><tr><th scope="row">ICICI Pru Focused</th><td>7 Sep 2018 → 23 Mar 2020 → 21 Aug 2020</td><td>714</td><td>305</td></tr><tr><th scope="row">ICICI Pru Mid Cap</th><td>8 Jan 2018 → 23 Mar 2020 → 2 Dec 2020</td><td>1,059</td><td>276</td></tr><tr><th scope="row">Quant Large &amp; Mid Cap</th><td>27 May 2015 → 29 Feb 2016 → 17 Nov 2020</td><td>2,001</td><td>290</td></tr><tr><th scope="row">Quant Infrastructure</th><td>23 Jan 2018 → 24 Mar 2020 → 9 Nov 2020</td><td>1,021</td><td>1,066</td></tr><tr><th scope="row">SBI PSU</th><td>6 Nov 2017 → 24 Mar 2020 → 4 Oct 2021</td><td>1,428</td><td>1,021</td></tr><tr><th scope="row">DSP Value</th><td>17 Jan 2022 → 20 Jun 2022 → 2 Dec 2022</td><td>319</td><td>320</td></tr><tr class="refrow"><th scope="row">Nifty 50 proxy</th><td>14 Jan 2020 → 23 Mar 2020 → 9 Nov 2020</td><td>300</td><td>—</td></tr>
+</tbody>
+</table></div>
+</details>
+</section>
+</main>
+</div>
 <section class="card alloc" id="allocation">
 <h2>Research allocation (₹10 lakh model)</h2>
 <p>Illustration only; past returns, not a forecast. NAV to 19 Nov 2026 (18 Nov for SBI Focused and DSP Value; still their latest on AMFI and mfapi.in at 7:12 AM IST). Source: data/2026-11-20-metrics.json.</p>
@@ -1040,7 +1614,7 @@ a{color:#005a8c}
 </tr>
 </tbody>
 </table></div>
-<p>Most of the list leans on two boom years (2021 and 2023). Most concentrated: SBI Healthcare 86%, BOI Small Cap 82%, Invesco Infra 76%. Most even: ICICI Pru Focused 55%, SBI PSU 55%, ABSL PSU 61%. Top-2 shares are unchanged from 19 Nov (full calendar years do not move).</p>
+<p>Most of the list leans on two boom years (2021 and 2023). Most concentrated: SBI Healthcare 86%, BOI Small Cap 82%, Invesco Infra 76%. Most even: ICICI Pru Focused 55%, SBI PSU 55%, ABSL PSU 61%. Top-2 shares use full calendar years only, so they do not move day to day. SBI Focused computes to 70.5%: shown as 70% here and 71% on 19 Nov because of rounding at the half-point. From 21 Nov it rounds half up to 71% (clarified 20 Nov 11:25 AM). It is not a data change.</p>
 <h3>Calendar-year returns — Direct Growth, year-end to year-end (🟢 best full year, 🔴 worst full year; — = not launched or partial first year). YTD to NAV 19 Nov 2026 (SBI Focused, DSP Value 18 Nov)</h3>
 <div class="tbl"><table>
 <thead>
@@ -1876,7 +2450,7 @@ a{color:#005a8c}
 </ul>
 <h3>Data gaps and source notes</h3>
 <ul>
-<li>SBI Focused and DSP Value: latest NAV is 18 Nov on both AMFI and mfapi.in (checked about 2:14 AM IST). Their figures are at 18 Nov in every table.</li>
+<li>SBI Focused and DSP Value: latest NAV is 18 Nov on both AMFI and mfapi.in (checked about 2:14 AM IST). Their figures are at 18 Nov in every table. <strong>Update 9 AM:</strong> SBI Focused's 19 Nov NAV (₹466.4763) arrived; see the 9 AM section (YTD +8.6%, 5y +10.8%). DSP Value is still at 18 Nov.</li>
 <li>mfapi.in had not posted 19 Nov NAVs at 2:13 AM IST; I added them from AMFI's own NAVAll.txt (data/patch_amfi.py). Same values, primary source.</li>
 <li>Month-by-month AUM/flow series still missing for most funds (one month of Tarazu flow data only).</li>
 <li>Quant Large &amp; Mid: Tarazu page text was cut off for AUM; ₹3,370 Cr (31 Oct) is carried from the 17 Nov report.</li>
@@ -2023,8 +2597,322 @@ a{color:#005a8c}
 </ul>
 <blockquote>
 <p>10 AM run (20 Nov, ~10:07 AM IST): re-checked; no figure changed. DSP Value still at 18 Nov NAV on AMFI/mfapi.in.</p>
+</blockquote>
+<h3>11 AM conclusion (20 Nov 2026, about 11:08 AM IST)</h3>
+<ul>
+<li><strong>Concluded verdict, Day 4:</strong> No verdict or rank changed today. Leaders: ABSL PSU Equity (Keep, now Low after the PSU-theme flag), BOI Small Cap (Star, emerging, Medium) and Invesco India Infra (Keep, now Low after the capex-theme flag). SBI Healthcare stays a Star at Low. DSP Value stays on Watch, SBI PSU is still a drop candidate, and both Quant funds stay on governance hold. Proposal D (does a multi-sector theme count as single-sector concentration) is waiting for Vipul.</li>
+<li>NAVs re-checked on AMFI NAVAll.txt (~11:06 AM IST): DSP Value (148595) is still at its 18 Nov NAV of ₹25.4490. The other checked funds are at 19 Nov.</li>
+<li>Handoffs: no previously delivered figure was revised today (changes.md), so nothing goes to Chief of Staff · Vartrav. No fund has completed 4 weeks (first one is due 15 Dec). Research &amp; Docs Lead gets this report's path and glossary.md for the daily card.</li>
+</ul>
+<blockquote>
+<p>11:25 AM note: SBI Focused 2026 YTD was +9.0% on the 17 Nov NAV (₹467.9665, used in the 19 Nov report), +8.2% on 18 Nov (₹464.5897) and +8.6% on 19 Nov (₹466.4763). These are real daily price moves, not errors (api.mfapi.in, checked 20 Nov).</p>
 </blockquote></section>
-<footer>Research only, not investment advice.</footer>
-</main>
+<footer>Research only, not investment advice. Past returns don’t guarantee future results.</footer>
+<script type="application/json" id="fund-data">
+{
+  "asOf": "2026-11-20",
+  "funds": [
+    {
+      "id": "absl-psu",
+      "name": "ABSL PSU Equity",
+      "short": "ABSL PSU",
+      "verdict": "Keep",
+      "tier": "Low",
+      "verdictLabel": "Keep · Low",
+      "cagr5y": 23.5,
+      "worstFall": -33.8,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 23.5,
+          "worstFall": -33.8
+        }
+      ]
+    },
+    {
+      "id": "boi-small-cap",
+      "name": "BOI Small Cap",
+      "short": "BOI Small Cap",
+      "verdict": "Star",
+      "tier": "Medium",
+      "verdictLabel": "Star · Medium",
+      "cagr5y": 18.7,
+      "worstFall": -32.4,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 18.7,
+          "worstFall": -32.4
+        }
+      ]
+    },
+    {
+      "id": "invesco-infra",
+      "name": "Invesco India Infra",
+      "short": "Invesco Infra",
+      "verdict": "Keep",
+      "tier": "Low",
+      "verdictLabel": "Keep · Low",
+      "cagr5y": 16.4,
+      "worstFall": -36.2,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 16.4,
+          "worstFall": -36.2
+        }
+      ]
+    },
+    {
+      "id": "boi-mfg",
+      "name": "BOI Mfg & Infra",
+      "short": "BOI Mfg & Infra",
+      "verdict": "Keep",
+      "tier": "Medium",
+      "verdictLabel": "Keep · Medium",
+      "cagr5y": 20.7,
+      "worstFall": -43.5,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 20.7,
+          "worstFall": -43.5
+        }
+      ]
+    },
+    {
+      "id": "canara-infra",
+      "name": "Canara Robeco Infra",
+      "short": "Canara Infra",
+      "verdict": "Keep",
+      "tier": "Medium",
+      "verdictLabel": "Keep · Medium",
+      "cagr5y": 17.9,
+      "worstFall": -44.1,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 17.9,
+          "worstFall": -44.1
+        }
+      ]
+    },
+    {
+      "id": "sbi-health",
+      "name": "SBI Healthcare Opps",
+      "short": "SBI Healthcare",
+      "verdict": "Star",
+      "tier": "Low",
+      "verdictLabel": "Star · Low",
+      "cagr5y": 20.7,
+      "worstFall": -30.5,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 20.7,
+          "worstFall": -30.5
+        }
+      ]
+    },
+    {
+      "id": "bandhan-sc",
+      "name": "Bandhan Small Cap",
+      "short": "Bandhan Small Cap",
+      "verdict": "Keep",
+      "tier": "Medium",
+      "verdictLabel": "Keep · Medium",
+      "cagr5y": 19.5,
+      "worstFall": -24.3,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 19.5,
+          "worstFall": -24.3
+        }
+      ]
+    },
+    {
+      "id": "sbi-focused",
+      "name": "SBI Focused",
+      "short": "SBI Focused",
+      "verdict": "Watch",
+      "tier": "Medium",
+      "verdictLabel": "Watch · Medium",
+      "cagr5y": 10.8,
+      "worstFall": -32.7,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 10.8,
+          "worstFall": -32.7
+        }
+      ]
+    },
+    {
+      "id": "icici-focused",
+      "name": "ICICI Pru Focused",
+      "short": "ICICI Focused",
+      "verdict": "Watch",
+      "tier": "Medium",
+      "verdictLabel": "Watch · Medium",
+      "cagr5y": 15.9,
+      "worstFall": -34.1,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 15.9,
+          "worstFall": -34.1
+        }
+      ]
+    },
+    {
+      "id": "icici-mid",
+      "name": "ICICI Pru Mid Cap",
+      "short": "ICICI Mid Cap",
+      "verdict": "Watch",
+      "tier": "Low",
+      "verdictLabel": "Watch · Low",
+      "cagr5y": 15.7,
+      "worstFall": -44.0,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 15.7,
+          "worstFall": -44.0
+        }
+      ]
+    },
+    {
+      "id": "quant-lm",
+      "name": "Quant Large & Mid Cap",
+      "short": "Quant L&M",
+      "verdict": "Watch, governance hold",
+      "tier": "Low",
+      "verdictLabel": "Watch, governance hold · Low",
+      "cagr5y": 15.1,
+      "worstFall": -45.7,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 15.1,
+          "worstFall": -45.7
+        }
+      ]
+    },
+    {
+      "id": "quant-infra",
+      "name": "Quant Infrastructure",
+      "short": "Quant Infra",
+      "verdict": "Governance hold",
+      "tier": "Low",
+      "verdictLabel": "Governance hold · Low",
+      "cagr5y": 15.8,
+      "worstFall": -46.0,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 15.8,
+          "worstFall": -46.0
+        }
+      ]
+    },
+    {
+      "id": "sbi-psu",
+      "name": "SBI PSU",
+      "short": "SBI PSU",
+      "verdict": "Drop candidate",
+      "tier": "Low",
+      "verdictLabel": "Drop candidate · Low",
+      "cagr5y": 23.1,
+      "worstFall": -47.1,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 23.1,
+          "worstFall": -47.1
+        }
+      ]
+    },
+    {
+      "id": "dsp-value",
+      "name": "DSP Value",
+      "short": "DSP Value",
+      "verdict": "Watch",
+      "tier": "Low",
+      "verdictLabel": "Watch · Low",
+      "cagr5y": 13.7,
+      "worstFall": -16.5,
+      "history": [
+        {
+          "asOf": "2026-11-18",
+          "cagr5y": 13.7,
+          "worstFall": -16.5
+        }
+      ]
+    },
+    {
+      "id": "nifty-50",
+      "name": "Nifty 50 proxy",
+      "short": "Nifty 50",
+      "verdict": "Reference",
+      "tier": "",
+      "verdictLabel": "Reference",
+      "cagr5y": 8.5,
+      "worstFall": -38.4,
+      "history": [
+        {
+          "asOf": "2026-11-19",
+          "cagr5y": 8.5,
+          "worstFall": -38.4
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+/* Weekly trails: the JSON block above is the data. Each fund has a history array.
+   The last point is the current position (already drawn). To add a week, append
+   {asOf, cagr5y, worstFall} and call drawTrails(). The chart axes match the SVG:
+   x = worst fall (full history), smaller fall on the left; y = 5-year growth per year. */
+(function () {
+  var W = 860, H = 520, PAD_L = 72, PAD_R = 36, PAD_T = 44, PAD_B = 56;
+  var PLOT_W = W - PAD_L - PAD_R, PLOT_H = H - PAD_T - PAD_B;
+  var X_LEFT = -12.0, X_RIGHT = -52.0, Y_BOT = 5.0, Y_TOP = 26.0;
+  function sx(fall) { return PAD_L + (fall - X_LEFT) / (X_RIGHT - X_LEFT) * PLOT_W; }
+  function sy(cagr) { return PAD_T + (Y_TOP - cagr) / (Y_TOP - Y_BOT) * PLOT_H; }
+  window.drawTrails = function () {
+    var el = document.getElementById("fund-data");
+    var g = document.getElementById("trails");
+    if (!el || !g) return;
+    var data = JSON.parse(el.textContent);
+    g.textContent = "";
+    data.funds.forEach(function (f) {
+      if (!f.history || f.history.length < 2) return;
+      var d = f.history.map(function (p, i) {
+        return (i ? "L" : "M") + sx(p.worstFall).toFixed(1) + " " + sy(p.cagr5y).toFixed(1);
+      }).join(" ");
+      var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", d);
+      path.setAttribute("fill", "none");
+      path.setAttribute("stroke", "#5d6678");
+      path.setAttribute("stroke-width", "1.5");
+      path.setAttribute("opacity", "0.7");
+      g.appendChild(path);
+      f.history.slice(0, -1).forEach(function (p) {
+        var c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+        c.setAttribute("cx", sx(p.worstFall).toFixed(1));
+        c.setAttribute("cy", sy(p.cagr5y).toFixed(1));
+        c.setAttribute("r", "2.5");
+        c.setAttribute("fill", "#5d6678");
+        g.appendChild(c);
+      });
+    });
+  };
+  window.drawTrails();
+})();
+</script>
+
 </body>
 </html>
