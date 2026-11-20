@@ -33,6 +33,16 @@ main{max-width:1120px;margin:auto;padding:16px}
 .archive-list a{color:#005a8c;font-weight:600;text-decoration:none}
 .archive-list a:hover{text-decoration:underline}
 .archive-list .meta{display:block;color:var(--mute,#5d6678);font-size:.85rem;margin-top:2px}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.scrollhint{display:none;color:var(--mute);font-size:.8rem;margin:0 0 6px}
+@media (max-width:720px){.scrollhint{display:block}}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{padding:6px 7px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child,.verdict-cell,.why{text-align:left}
+th{color:var(--mute);font-weight:600}
+.card{max-width:100%;min-width:0}
+.report p,.report li,.report code,.alloc p,.alloc li,.corrections li,.disclaimer,.edition-meta,footer{
+overflow-wrap:anywhere;word-break:break-word}
 footer{color:var(--mute);font-size:.8rem;text-align:center;padding:8px 8px 20px}
 a{color:#005a8c}
 </style>
