@@ -13,6 +13,13 @@ Published research editions, newest first in the [archive](reports/). Each editi
 - [Latest edition](reports/latest/)
 - [Archive](reports/)
 
+
+## Research
+
+Published baseline notes. Research only, not investment advice.
+
+- [Fund manager role and BOI Small Cap: baseline research](research/fund-manager-baseline/)
+
 ## Status
 
 Public research notes. A fuller dashboard may follow.

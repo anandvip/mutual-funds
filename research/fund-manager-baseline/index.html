@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fund manager role and BOI Small Cap: baseline research</title>
+<meta name="description" content="A living baseline on what an Indian mutual-fund manager controls, a case study of Bank of India Small Cap Fund across three managers, and the thought patterns worth borrowing. Research only, not advice. First written 25 Nov 2026, IST.">
+<link rel="canonical" href="https://mf.vipulanand.in/research/fund-manager-baseline/">
+
+<style>
+:root{--ink:#1d2330;--mute:#5d6678;--line:#e3e6ec;--bg:#f7f8fa;--star:#009E73;--keep:#0072B2;--watch:#E69F00;--drop:#D55E00;--hold:#CC79A7;--low:#7a4450}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}
+main{max-width:1120px;margin:auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:0 0 14px}
+.site-header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;padding:4px 0 12px}
+.site-header a{color:inherit;text-decoration:none}
+.site-header .brand{font-weight:700;letter-spacing:.01em}
+.site-header nav{display:flex;gap:14px;font-size:.9rem}
+.site-header nav a{color:var(--mute,#5d6678)}
+.site-header nav a:hover{color:var(--ink,#1d2330)}
+.site-header nav a[aria-current="page"]{color:var(--ink,#1d2330);font-weight:600}
+.disclaimer{background:#fff6e8;border:1px solid #ecd9b5;border-radius:10px;padding:10px 14px;margin:0 0 14px;font-size:.95rem}
+.edition-meta{color:var(--mute,#5d6678);font-size:.9rem;margin:0 0 12px}
+.lede{margin:0 0 1rem}
+.toc{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 16px;font-size:.9rem}
+.toc a{color:#005a8c}
+.report p,.report li{line-height:1.55}
+.report h1{font-size:1.35rem;line-height:1.3;margin:0 0 .5rem}
+.report h2,.report h3,.alloc h2{font-size:1rem;margin:1.1rem 0 .5rem}
+.report h2:first-child,.alloc h2:first-child{margin-top:.2rem}
+.report ul,.report ol{margin:.2rem 0 .8rem;padding-left:1.2rem}
+.report li{margin:.25rem 0}
+.archive-list{list-style:none;margin:0;padding:0}
+.archive-list li{border-bottom:1px solid var(--line,#e3e6ec);padding:10px 0}
+.archive-list a{color:#005a8c;font-weight:600;text-decoration:none}
+.archive-list a:hover{text-decoration:underline}
+.archive-list .meta{display:block;color:var(--mute,#5d6678);font-size:.85rem;margin-top:2px}
+.tbl{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.scrollhint{display:none;color:var(--mute);font-size:.8rem;margin:0 0 6px}
+table{width:100%;font-size:.82rem}
+.tbl table{border-collapse:separate;border-spacing:0;width:100%;font-size:.82rem}
+th,td{padding:6px 7px;border-bottom:1px solid var(--line);text-align:right}
+th:first-child,td:first-child,.verdict-cell,.why,.tl{text-align:left}
+th{color:var(--mute);font-weight:600}
+.tbl th:first-child,.tbl td:first-child{
+position:sticky;left:0;z-index:2;background:#fff;text-align:left;white-space:normal;
+border-right:1px solid var(--line);box-shadow:2px 0 4px -2px rgba(29,35,48,.12)}
+.tbl thead th:first-child{z-index:3;background:#fff}
+.tbl .refrow th:first-child,.tbl .refrow td:first-child{background:#f3f5f8}
+.tbl table.has-rank th:first-child,.tbl table.has-rank td:first-child{
+width:2.1rem;min-width:2.1rem;max-width:2.1rem;padding:6px 4px;text-align:center;
+left:0;border-right:none;box-shadow:none}
+.tbl table.has-rank th:nth-child(2),.tbl table.has-rank td:nth-child(2){
+position:sticky;left:2.1rem;z-index:2;background:#fff;text-align:left;white-space:normal;
+border-right:1px solid var(--line);box-shadow:2px 0 4px -2px rgba(29,35,48,.12)}
+.tbl table.has-rank thead th:first-child,.tbl table.has-rank thead th:nth-child(2){z-index:3;background:#fff}
+.tbl table.has-rank .refrow th:first-child,.tbl table.has-rank .refrow td:first-child,
+.tbl table.has-rank .refrow th:nth-child(2),.tbl table.has-rank .refrow td:nth-child(2){background:#f3f5f8}
+.card{max-width:100%;min-width:0}
+.report p,.report li,.report code,.alloc p,.alloc li,.corrections li,.disclaimer,.edition-meta,footer,blockquote,.callout,.archive-list .meta{
+overflow-wrap:anywhere;word-break:break-word}
+.callout{background:#eef5fb;border:1px solid #c5d8e8;border-radius:10px;padding:10px 14px;margin:.8rem 0;font-size:.95rem}
+.callout .lead{font-weight:700}
+blockquote{margin:.8rem 0;padding:8px 14px;border-left:3px solid var(--line);background:#f3f5f8}
+blockquote cite{display:block;margin-top:.4rem;color:var(--mute);font-size:.85rem;font-style:normal}
+@media (max-width:720px){
+.scrollhint{display:block}
+.tbl th:first-child,.tbl td:first-child{min-width:7rem;max-width:9.5rem;white-space:normal}
+.tbl table.has-rank th:first-child,.tbl table.has-rank td:first-child{
+width:2.1rem;min-width:2.1rem;max-width:2.1rem}
+.tbl table.has-rank th:nth-child(2),.tbl table.has-rank td:nth-child(2){
+min-width:6.5rem;max-width:8.5rem;white-space:normal}
+}
+footer{color:var(--mute);font-size:.8rem;text-align:center;padding:8px 8px 20px}
+a{color:#005a8c}
+</style>
+</head>
+<body>
+<main>
+<header class="site-header">
+  <a class="brand" href="/">mutual-funds</a>
+  <nav>
+    <a href="/reports/">Daily reports</a>
+    <a href="/reports/latest/">Latest</a>
+    <a href="/research/fund-manager-baseline/" aria-current="page">Research</a>
+  </nav>
+</header>
+<p class="disclaimer"><strong>Research only, not investment advice.</strong></p>
+<p class="edition-meta">First written 25 Nov 2026, IST.</p>
+<nav class="toc" aria-label="On this page">
+  <a href="#how-to-read-this-page">How to read this page</a>
+  <a href="#the-role">1. The role</a>
+  <a href="#case-study-boi-small-cap">2. Case study: BOI Small Cap</a>
+  <a href="#thought-patterns-worth-borrowing">3. Thought patterns worth borrowing</a>
+  <a href="#patterns-to-watch">4. Patterns to watch</a>
+  <a href="#what-works-what-doesnt">5. What works / what doesn't</a>
+  <a href="#open-questions">6. Open questions</a>
+  <a href="#videos-and-podcasts">Videos and podcasts</a>
+  <a href="#sources">Sources</a>
+</nav>
+
+<article class="report">
+<section class="card" id="how-to-read-this-page">
+<h1>Fund manager role and BOI Small Cap: baseline research</h1>
+<p class="lede">A living baseline on what an Indian mutual-fund manager controls, a case study of Bank of India Small Cap Fund across three managers, and the thought patterns worth borrowing. Research only, not advice. First written 25 Nov 2026, IST.</p>
+<h2>How to read this page</h2>
+<ul>
+<li>Sections 1 and 2 are facts, each with its source address beside it.</li>
+<li>Sections 3 to 5 are our analysis, labelled as such.</li>
+<li>"Inferred" marks a conclusion we drew, not a fact we read. "Not found" means we searched and found no evidence.</li>
+<li>Section 2's own return figures come from AMFI and mfapi daily prices (Direct Growth). They are tagged "Pending Fatail verification" until Fatail checks them.</li>
+<li>This page holds no account details or personal holdings.</li>
+</ul>
+</section>
+
+<section class="card" id="the-role">
+<h2>1. The role</h2>
+<p>Picture three rings. In the centre are the decisions the manager makes himself. Around them are the limits set by SEBI, the scheme document and his own firm. The outer ring holds what he does not control at all.</p>
+
+<h3 id="what-the-manager-decides">1.1 What the manager decides</h3>
+<ul>
+<li>Which stocks to buy, how much of each, when to buy and sell, and how much cash to hold, all inside the limits below.</li>
+<li>Example from BOI: the team tracks about 1,000 stocks and keeps about 250 in an active list. It holds a stock while its reason for owning it holds. Source: <a href="https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/" target="_blank" rel="noopener">https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/</a></li>
+</ul>
+
+<h3 id="the-rails">1.2 The rails</h3>
+<ul>
+<li>Category rule: a small-cap fund must keep at least 65% in small caps. Small caps are the 251st company onward by market value, on a list AMFI updates every six months. Source: <a href="https://www.sebi.gov.in/legal/circulars/oct-2017/categorization-and-rationalization-of-mutual-fund-schemes_36199.html" target="_blank" rel="noopener">https://www.sebi.gov.in/legal/circulars/oct-2017/categorization-and-rationalization-of-mutual-fund-schemes_36199.html</a></li>
+<li>Scheme document: BOI Small Cap may hold 65–100% in small caps and up to 35% in other stocks. Source: <a href="https://www.boimf.in/products/equity-funds/bank-of-india-small-cap-fund" target="_blank" rel="noopener">https://www.boimf.in/products/equity-funds/bank-of-india-small-cap-fund</a></li>
+<li>Single-stock cap: usually no more than 10% of NAV in one company's shares (Seventh Schedule, 1996 Regulations). Source: <a href="https://www.sebi.gov.in/sebi_data/attachdocs/mar-2025/1741605370357.pdf" target="_blank" rel="noopener">https://www.sebi.gov.in/sebi_data/attachdocs/mar-2025/1741605370357.pdf</a>
+  <ul>
+    <li>The 1996 Regulations have been replaced by the SEBI (Mutual Funds) Regulations, 2026. We did not check whether the 10% wording carried over unchanged. Source: <a href="https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792659909505.pdf" target="_blank" rel="noopener">https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792659909505.pdf</a></li>
+  </ul>
+</li>
+<li>Liquidity stress tests: since Feb 2024, mid- and small-cap funds must publish each month how many days it would take to sell 25% and 50% of the portfolio. Sources: <a href="https://www.business-standard.com/markets/mutual-fund/mfs-told-to-disclose-stress-test-reports-of-midcap-smallcap-schemes-124022901229_1.html" target="_blank" rel="noopener">https://www.business-standard.com/markets/mutual-fund/mfs-told-to-disclose-stress-test-reports-of-midcap-smallcap-schemes-124022901229_1.html</a> and <a href="https://www.amfiindia.com/risk-parameters" target="_blank" rel="noopener">https://www.amfiindia.com/risk-parameters</a></li>
+<li>Investor-protection policy: AMCs keep a policy for mid- and small-cap investors (JM Financial's shown as an example). Source: <a href="https://www.jmfinancialmf.com/CMS/downloads/Statutory%20Disclosure/Policy%20to%20Protect%20the%20Interest%20of%20Investors%20of%20Mid%20Cap%20and%20Small%20Cap%20Schemes/Policy%20to%20Protect%20the%20Interest%20of%20Investors%20of%20Mid%20Cap%20and%20Small%20Cap%20Schemes.pdf" target="_blank" rel="noopener">https://www.jmfinancialmf.com/CMS/downloads/Statutory%20Disclosure/Policy%20to%20Protect%20the%20Interest%20of%20Investors%20of%20Mid%20Cap%20and%20Small%20Cap%20Schemes/Policy%20to%20Protect%20the%20Interest%20of%20Investors%20of%20Mid%20Cap%20and%20Small%20Cap%20Schemes.pdf</a></li>
+<li>Pay held in fund units: at least 20% of a fund manager's eligible pay comes as units of the funds he oversees, locked for 3 years, and can be clawed back for misconduct. Sources: <a href="https://www.sebi.gov.in/sebi_data/attachdocs/apr-2021/1619614807999.pdf" target="_blank" rel="noopener">https://www.sebi.gov.in/sebi_data/attachdocs/apr-2021/1619614807999.pdf</a> and <a href="https://www.sebi.gov.in/legal/circulars/jun-2021/alignment-of-interest-of-key-employees-of-asset-management-companies-amcs-with-the-unitholders-of-the-mutual-fund-schemes_50693.html" target="_blank" rel="noopener">https://www.sebi.gov.in/legal/circulars/jun-2021/alignment-of-interest-of-key-employees-of-asset-management-companies-amcs-with-the-unitholders-of-the-mutual-fund-schemes_50693.html</a></li>
+<li>Above him: the CIO, the AMC's investment and risk teams, the trustees and the board. Inferred: this is the standard structure. BOI's internal committee rules: not found. At BOI the CIO and the small-cap fund manager are the same person (see section 2).</li>
+</ul>
+
+<h3 id="what-he-does-not-control">1.3 What he does not control</h3>
+<ul>
+<li>Fees: the AMC sets the expense ratio within SEBI's caps. Since 1 Apr 2026 the cap for equity funds starts at 2.10% on the first ₹500 Cr and steps down as the fund grows. Source: <a href="https://cafemutual.com/news/industry/36520-sebi-cuts-expense-ratio-active-equity-funds-expense-ratio-now-ranges-between-095-and-210" target="_blank" rel="noopener">https://cafemutual.com/news/industry/36520-sebi-cuts-expense-ratio-active-equity-funds-expense-ratio-now-ranges-between-095-and-210</a></li>
+<li>BOI Small Cap Direct's base expense ratio is 0.44% (Oct 2026). Source: <a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-october-2026.pdf" target="_blank" rel="noopener">https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-october-2026.pdf</a></li>
+<li>Investor money coming in and going out, marketing, and distributors.</li>
+</ul>
+
+<h3 id="the-two-engines-of-aum-growth">1.4 The two engines of AUM growth</h3>
+<ol>
+<li>Market gains: the portfolio's price (NAV) rises. This is the manager's skill.</li>
+<li>Net investor flows: more money comes in than goes out. The manager influences this only indirectly, because good recent returns draw money through distributors and ratings.</li>
+</ol>
+<p>Size becomes a burden in small caps because a large fund cannot easily buy or sell thinly traded stocks. Nippon India Small Cap, at about ₹28,780 Cr, stopped taking lump sums from 7 Jul 2023 for that reason. Source: <a href="https://www.livemint.com/money/personal-finance/nippon-india-smallcap-fund-stops-taking-lump-sum-subscription-from-july-7-fresh-sips-to-continue-with-limits-11688651914503.html" target="_blank" rel="noopener">https://www.livemint.com/money/personal-finance/nippon-india-smallcap-fund-stops-taking-lump-sum-subscription-from-july-7-fresh-sips-to-continue-with-limits-11688651914503.html</a></p>
+<p>Manager versus process: BOI's CIO credits risk management and the house's process for results, not a single person. Source: <a href="https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/" target="_blank" rel="noopener">https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/</a></p>
+</section>
+
+<section class="card" id="case-study-boi-small-cap">
+<h2>2. Case study: BOI Small Cap</h2>
+<p>Bank of India Small Cap Fund, Direct Growth (AMFI code 145678). Launched 19 Dec 2018. Benchmark: Nifty Smallcap 250 TRI, not the BSE 250. Source: <a href="https://www.boimf.in/products/equity-funds/bank-of-india-small-cap-fund" target="_blank" rel="noopener">https://www.boimf.in/products/equity-funds/bank-of-india-small-cap-fund</a></p>
+
+<h3 id="the-three-managers">2.1 The three managers</h3>
+<p class="scrollhint">Swipe to see more columns.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Period</th>
+<th class="tl">Manager(s)</th>
+<th class="tl">Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>19 Dec 2018 – 18 Jul 2022</td>
+<td class="tl">Aakash Manghani</td>
+<td class="tl">Dhruv Bhatia joined as co-manager on 27 Apr 2022</td>
+</tr>
+<tr>
+<td>19 Jul 2022 – 30 Sep 2024</td>
+<td class="tl">Dhruv Bhatia, alone</td>
+<td class="tl">He left the AMC</td>
+</tr>
+<tr>
+<td>1 Oct 2024 – now</td>
+<td class="tl">Alok Singh, lead</td>
+<td class="tl">Nav Bhardwaj co-manager since 14 Jul 2025</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources: <a href="https://www.valueresearchonline.com/stories/50762/appointment-of-new-fund-manager-in-two-schemes-of-boi-axa-mutual-fund/" target="_blank" rel="noopener">https://www.valueresearchonline.com/stories/50762/appointment-of-new-fund-manager-in-two-schemes-of-boi-axa-mutual-fund/</a> , <a href="https://www.valueresearchonline.com/stories/51061/aakash-manghani-ceases-to-be-the-fund-manager-in-bank-of-india-mutual-fund/" target="_blank" rel="noopener">https://www.valueresearchonline.com/stories/51061/aakash-manghani-ceases-to-be-the-fund-manager-in-bank-of-india-mutual-fund/</a> , <a href="https://www.boimf.in/docs/default-source/reports/addenda-notice/cessation-of-fm-and-change-in-fm-responsibilities---september-30-2024.pdf" target="_blank" rel="noopener">https://www.boimf.in/docs/default-source/reports/addenda-notice/cessation-of-fm-and-change-in-fm-responsibilities---september-30-2024.pdf</a> and the Oct 2026 factsheet.</p>
+
+<h3 id="alok-singh-profile">2.2 Alok Singh: profile</h3>
+<p class="scrollhint">Swipe to see more columns.</p>
+<div class="tbl"><table>
+<tbody>
+<tr><td>Education</td><td class="tl">CFA; PGDBA, ICFAI Business School (boimf.in fund page)</td></tr>
+<tr><td>Experience</td><td class="tl">About 20 years, 16 in mutual funds (Mar 2026 factsheet)</td></tr>
+<tr><td>Career</td><td class="tl">Proprietary trader at UTI Bank (now Axis); fixed income; joined BOI in 2012; CIO from 2015–16 (Value Research, 4 Oct 2024)</td></tr>
+<tr><td>Funds now</td><td class="tl">Manages 9 BOI schemes and co-manages 1, including Flexi Cap, ELSS, Large Cap, Mid Cap, Business Cycle, the hybrids and Credit Risk (Oct 2026 factsheet; felixwealth.in)</td></tr>
+<tr><td>Key point</td><td class="tl">As CIO he oversaw this fund through the Manghani and Bhatia years too</td></tr>
+<tr><td>LinkedIn</td><td class="tl">Not found (no profile we could verify)</td></tr>
+<tr><td>Investor contact</td><td class="tl">No direct line found. Routes: BOI MF investor services and grievance page, linked from the factsheet</td></tr>
+</tbody>
+</table></div>
+<p>Sources: <a href="https://www.boimf.in/products/equity-funds/bank-of-india-small-cap-fund" target="_blank" rel="noopener">https://www.boimf.in/products/equity-funds/bank-of-india-small-cap-fund</a> , <a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-march-2026.pdf" target="_blank" rel="noopener">https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-march-2026.pdf</a> , <a href="https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/" target="_blank" rel="noopener">https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/</a> , <a href="https://felixwealth.in/mutual-funds/bank-of-india-small-cap-fund-145677" target="_blank" rel="noopener">https://felixwealth.in/mutual-funds/bank-of-india-small-cap-fund-145677</a></p>
+<blockquote>
+<p>With a background in fixed income... return on equity (ROE) replaces the IRR, while cash flows remain crucial... I adhere to investing in classic cash flow companies.</p>
+<cite>Alok Singh, Value Research, 4 Oct 2024 — <a href="https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/" target="_blank" rel="noopener">valueresearchonline.com/stories/222103</a></cite>
+</blockquote>
+<p>He also says stocks are held on a hypothesis that "margins or the market share will increase" (same source). In 2026 he argued small caps should be judged on PEG rather than P/E alone. Source: <a href="https://www.moneycontrol.com/news/business/personal-finance/small-cap-vs-large-cap-funds-are-small-caps-overvalued-or-justified-by-faster-earnings-growth-14011624.html" target="_blank" rel="noopener">https://www.moneycontrol.com/news/business/personal-finance/small-cap-vs-large-cap-funds-are-small-caps-overvalued-or-justified-by-faster-earnings-growth-14011624.html</a> (21 Aug 2026)</p>
+<p>One bold claim found, on 4 Oct 2024, three days after he took over the fund: "the small-cap fund has given 35 per cent returns in the last five years." The figure is roughly right (we compute about 40% a year for Direct), but the article credits that record to his leadership while Manghani and Bhatia ran the fund. No other bold claims found.</p>
+
+<h3 id="his-steering-moves">2.3 His steering moves: before and after</h3>
+<p class="scrollhint">Swipe to see more columns.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Measure</th>
+<th>30 Sep 2024 (Bhatia)</th>
+<th>31 Oct 2026 (Singh)</th>
+<th class="tl">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUM</td>
+<td>₹1,517 Cr</td>
+<td>₹3,685 Cr</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Cash and similar</td>
+<td>8.5%</td>
+<td>4.6%</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Small / mid / large</td>
+<td>80.4% / 7.8% / 3.2%</td>
+<td>86.9% / 6.4% / 1.9%</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Number of stocks</td>
+<td>65 (our count)</td>
+<td>82 (ETMoney, date not stated)</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Turnover</td>
+<td>0.64×</td>
+<td>0.65× (0.79× Mar 2026)</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Std dev / beta</td>
+<td>15.0% / 0.78</td>
+<td>22.4% / 0.95</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Direct expense ratio</td>
+<td>0.48%</td>
+<td>0.44%</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+</tbody>
+</table></div>
+<p>Top 10 in Sep 2024: Kaynes, Jyoti CNC, Ami Organics, Eris, PCBL, Cholamandalam Financial Holdings, Vijaya Diagnostic, Senco Gold, Castrol, Century Textiles.</p>
+<p>Top 10 in Oct 2026: City Union Bank, Sky Gold, CAMS, Raymond, Anand Rathi Wealth, Sigma Advanced, Sterlite Tech, Optiemus, Hero Motors, Knowledge Marine. No name appears in both lists. Oct 2026 additions included Ujjivan SFB, SAIL and Aequs.</p>
+<p>Sources: <a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-september-2024.pdf" target="_blank" rel="noopener">https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-september-2024.pdf</a> , <a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-october-2026.pdf" target="_blank" rel="noopener">https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-october-2026.pdf</a> , <a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-march-2026.pdf" target="_blank" rel="noopener">https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-march-2026.pdf</a> , <a href="https://www.etmoney.com/mutual-funds/bank-of-india-small-cap-fund/portfolio-details/38760" target="_blank" rel="noopener">https://www.etmoney.com/mutual-funds/bank-of-india-small-cap-fund/portfolio-details/38760</a></p>
+
+<h3 id="performance-by-era">2.4 Performance by era</h3>
+<p class="scrollhint">Swipe to see more columns.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Period</th>
+<th>BOI</th>
+<th>Index</th>
+<th>Peer median</th>
+<th>Rank</th>
+<th class="tl">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Whole life (launch – 23 Nov 2026)</td>
+<td>26.6%/yr</td>
+<td>n/a</td>
+<td>18.9%/yr</td>
+<td>1 of 10</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Manghani (Oct 2019 – Jul 2022)</td>
+<td>38.9%/yr</td>
+<td>24.0%/yr</td>
+<td>28.3%/yr</td>
+<td>1 of 11</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Bhatia alone (Jul 2022 – Sep 2024)</td>
+<td>42.1%/yr</td>
+<td>42.1%/yr</td>
+<td>35.9%/yr</td>
+<td>4 of 13</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Singh (Oct 2024 – 23 Nov 2026)</td>
+<td>7.1%/yr</td>
+<td>−1.7%/yr</td>
+<td>2.6%/yr</td>
+<td>3 of 16</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Fall after takeover (Oct 2024 – Mar 2025), total</td>
+<td>−17.0%</td>
+<td>−17.8%</td>
+<td>n/a</td>
+<td>10 of 16</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Recovery (Apr 2025 – Nov 2026), total</td>
+<td>+39.5%</td>
+<td>+17.4%</td>
+<td>n/a</td>
+<td>3 of 18</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Calendar 2020</td>
+<td>+55.0%</td>
+<td>+25.9%</td>
+<td>+27.3%</td>
+<td>1 of 11</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Calendar 2021–23</td>
+<td>35.5%/yr</td>
+<td>32.3%/yr</td>
+<td>32.5%/yr</td>
+<td>3 of 13</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>Calendar 2025</td>
+<td>−7.2%</td>
+<td>−5.6%</td>
+<td>−2.4%</td>
+<td>14 of 17</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>2026 to 23 Nov, total</td>
+<td>+28.4%</td>
+<td>+6.8%</td>
+<td>n/a</td>
+<td>1 of 21</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+</tbody>
+</table></div>
+<p>Method: Direct Growth daily NAVs from AMFI and mfapi (<a href="https://api.mfapi.in/mf/145678" target="_blank" rel="noopener">https://api.mfapi.in/mf/145678</a>). "Index" is the Motilal Oswal Nifty Smallcap 250 Index Fund, Direct, after its costs, used as a stand-in for the TRI. Peers are the 25 small-cap Direct funds that exist today, so funds that closed are missing. Rank counts BOI among peers alive at the period start.</p>
+<p>The fund's own factsheet agrees in direction: 1-year Direct +16.97% versus benchmark −2.61%, to 30 Oct 2026. Source: Oct 2026 factsheet.</p>
+<p>Fatail's figures match ours: 26.6% a year since launch and 7.0% a year over 2.1 years under the current manager, with a −27.1% worst fall. Source: <a href="https://mf.vipulanand.in/reports/daily/2026-11-25/" target="_blank" rel="noopener">https://mf.vipulanand.in/reports/daily/2026-11-25/</a></p>
+<div class="callout">
+<span class="lead">Reading of the 7% figure</span>
+The 7% is a timing effect, not weak management. Singh took over at the small-cap peak, the whole segment then fell, and the benchmark is still below its Sep 2024 level. Measured against peers and the benchmark, his period ranks 3rd of 16. The real outperformance in the fund's history came mostly under Manghani, especially in 2020. In the 2021–23 boom the fund was 3rd of 13 overall, and Bhatia's sole stretch only matched the index.
+</div>
+
+<h3 id="the-doubling">2.5 The doubling: ₹1,770 Cr to ₹3,685 Cr</h3>
+<p class="scrollhint">Swipe to see more columns.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Date</th>
+<th>AUM</th>
+<th>Direct NAV</th>
+<th class="tl">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>30 Sep 2024</td>
+<td>₹1,516.96 Cr</td>
+<td>₹55.85</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>31 Mar 2026</td>
+<td>₹1,770.44 Cr</td>
+<td>₹45.50</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>30 Sep 2026</td>
+<td>₹3,670.75 Cr</td>
+<td>not read</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+<tr>
+<td>31 Oct 2026</td>
+<td>₹3,685.24 Cr</td>
+<td>₹61.83</td>
+<td class="tl">Pending Fatail verification</td>
+</tr>
+</tbody>
+</table></div>
+<p>Sources: the Sep 2024, Mar 2026 and Oct 2026 factsheets, and the Sep 2026 product note at <a href="https://www.boimf.in/docs/default-source/productnote/boi-axa-small-cap-fund/bankofindiasmallcapfund091026.pdf" target="_blank" rel="noopener">https://www.boimf.in/docs/default-source/productnote/boi-axa-small-cap-fund/bankofindiasmallcapfund091026.pdf</a></p>
+<p>Inferred: between Sep 2024 and Oct 2026 the Direct NAV rose about 10.7%, which explains only about ₹160 Cr of growth. About ₹2,000 Cr came from net new money. Most of it arrived between Mar and Oct 2026, after the strong 2026 run. This ignores the timing of flows, so treat it as an estimate.</p>
+</section>
+
+<section class="card" id="thought-patterns-worth-borrowing">
+<h2>3. Thought patterns worth borrowing</h2>
+<div class="callout"><span class="lead">Our analysis</span> This section is our interpretation, not a source's claim and not advice.</div>
+
+<h3 id="how-professionals-turn-a-thesis-into-rules">3.1 How professionals turn a thesis into rules</h3>
+<ul>
+<li>Hold while the thesis holds: write the reason for owning something in one line (for example, "margins will rise"), check it on a schedule, and sell when the reason breaks, not when the price wobbles.</li>
+<li>Cash-flow and ROE lenses: judge a business by whether it turns capital into cash at a good rate, the way a bond is judged by its yield.</li>
+<li>PEG over P/E: a high P/E can be cheap if earnings grow fast. PEG divides P/E by earnings growth.</li>
+<li>Liquidity and position size: never own more of something than you could exit calmly, and cap any single bet.</li>
+<li>Check your own beta and drawdown: know how much your portfolio swings with the market and how deep its worst fall was, before the next fall arrives.</li>
+</ul>
+
+<h3 id="vipul-is-not-on-the-sebi-or-rbi-rails">3.2 Vipul is not on the SEBI or RBI rails</h3>
+<p>A personal investor is not bound by fund-category rules, the 10% single-stock cap, stress-test disclosures, or a trustee board. That freedom cuts both ways.</p>
+<p class="scrollhint">Swipe to see more columns.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Discipline</th>
+<th class="tl">Our view</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hold-while-thesis-holds, written down</td>
+<td class="tl">Worth copying voluntarily</td>
+</tr>
+<tr>
+<td>Position-size cap (self-chosen)</td>
+<td class="tl">Worth copying voluntarily</td>
+</tr>
+<tr>
+<td>Liquidity check before buying</td>
+<td class="tl">Worth copying voluntarily</td>
+</tr>
+<tr>
+<td>Track own beta and worst fall</td>
+<td class="tl">Worth copying voluntarily</td>
+</tr>
+<tr>
+<td>Separate 'checker' before acting (like trustees)</td>
+<td class="tl">Worth copying in a light form, such as a waiting period or a second review</td>
+</tr>
+<tr>
+<td>Fixed 65% category mandate</td>
+<td class="tl">Can drop: no need to stay in one bucket</td>
+</tr>
+<tr>
+<td>Mandatory diversification across many stocks</td>
+<td class="tl">Can drop, if a self-set size cap replaces it</td>
+</tr>
+<tr>
+<td>Public disclosure and stress-test reports</td>
+<td class="tl">Can drop: private notes are enough</td>
+</tr>
+<tr>
+<td>Fee caps</td>
+<td class="tl">Not applicable, but keep watching your own costs</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+
+<section class="card" id="patterns-to-watch">
+<h2>4. Patterns to watch</h2>
+<div class="callout"><span class="lead">Our analysis</span> Drawn from the BOI case; not yet tested on other funds.</div>
+<ul>
+<li>Manager-change timing: a new manager's absolute return mostly reflects where the market cycle stood on day one. Compare him with peers and the benchmark over the same dates.</li>
+<li>Key-person risk: one person as CIO and manager of about 10 schemes. Both earlier small-cap managers left the AMC (2022 and 2024).</li>
+<li>Style change after a handover: a fully replaced top 10 and a beta moving from 0.78 to 0.95 mean the old track record describes a different fund.</li>
+<li>Inflow surge after a hot year: AUM doubled in seven months after a strong 2026 run. Fast inflows can water down future small-cap returns.</li>
+</ul>
+</section>
+
+<section class="card" id="what-works-what-doesnt">
+<h2>5. What works / what doesn't</h2>
+<p>One log for both tracks: the proof-of-concept (PoC) and the fun rebalancing combinations. New entries are added to this page as they are tested.</p>
+<p class="scrollhint">Swipe to see more columns.</p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Date (IST)</th>
+<th class="tl">Track</th>
+<th class="tl">Pattern</th>
+<th class="tl">Evidence</th>
+<th class="tl">Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>25 Nov 2026</td>
+<td class="tl">PoC</td>
+<td class="tl">Judge a new manager against the market, not in absolute terms</td>
+<td class="tl">BOI Small Cap: 7.1%/yr under Singh looks weak, but ranks 3 of 16 versus peers and beats the index (−1.7%/yr). Section 2.4</td>
+<td class="tl">Works (pending Fatail verification)</td>
+</tr>
+</tbody>
+</table></div>
+</section>
+
+<section class="card" id="open-questions">
+<h2>6. Open questions</h2>
+<ol>
+<li>Question A (open since 19 Nov): after a manager change, when should we trust the fund's record again?
+  <ul>
+    <li>(a) From the current manager's start date: strict, and Fatail's current setting.</li>
+    <li>(b) From the longest-serving manager still on the team: Fatail's own pick.</li>
+    <li>(c) Restart only if the new manager really changed the holdings.</li>
+    <li>Inferred from this case: (a) misreads a timing effect as weakness, and (c) triggers here because the holdings did change. A peer- and benchmark-relative test of the current manager may be fairer, but only about 2 years of evidence exist.</li>
+  </ul>
+</li>
+<li>Repo gap: the public repo anandvip/mutual-funds, branch vipul, holds only reports/daily, capgrowfat.md, README.md and CNAME. The funds/ folder, watchlist.md and changes.md that the reports cite were not found there.</li>
+<li>Fatail to verify every figure tagged "Pending Fatail verification" in section 2.</li>
+<li>Not found: BOI's internal investment-committee rules, Alok Singh's LinkedIn, the podcast's date, and an exact Oct 2026 stock count from the factsheet.</li>
+</ol>
+</section>
+
+<section class="card" id="videos-and-podcasts">
+<h2>Videos and podcasts</h2>
+<p>Not watched or listened to by us. Listed for review.</p>
+<ul class="archive-list">
+<li><a href="https://www.valueresearchonline.com/videos/watch/222103/alok-singh-boi-investment-mutual-fund-interview/" target="_blank" rel="noopener">Why Bank of India MF CIO sees excesses in mid caps but not in small caps (video)</a><span class="meta">Value Research · 4 Oct 2024</span></li>
+<li><a href="https://valueresearch.podbean.com/e/decoding-bank-of-india-mutual-fund-s-new-mid-cap-nfo-with-alok-singh/" target="_blank" rel="noopener">Decoding Bank of India Mutual Fund's new Mid Cap NFO with Alok Singh (podcast)</a><span class="meta">Value Research · Date not found</span></li>
+<li><a href="https://www.businesstoday.in/bt-tv/market-today/video/midcaps-smallcaps-debt-funds-where-should-investors-put-money-alok-singh-live-537457-2026-06-17" target="_blank" rel="noopener">Midcaps, Smallcaps &amp; Debt Funds: Where Should Investors Put Money? Alok Singh Live</a><span class="meta">Business Today TV · 17 Jun 2026</span></li>
+<li><a href="https://www.businesstoday.in/bt-tv/market-today/video/boi-mf-cio-alok-singh-on-market-outlook-midcaps-banking-stocks-and-investment-strategy-546181-2026-07-30" target="_blank" rel="noopener">BOI MF CIO Alok Singh on market outlook, midcaps, banking stocks and investment strategy</a><span class="meta">Business Today TV · 30 Jul 2026</span></li>
+</ul>
+</section>
+
+<section class="card" id="sources">
+<h2>Sources</h2>
+<ul class="archive-list">
+<li><a href="https://www.sebi.gov.in/legal/circulars/oct-2017/categorization-and-rationalization-of-mutual-fund-schemes_36199.html" target="_blank" rel="noopener">SEBI: Categorization and rationalization of MF schemes</a><span class="meta">sebi.gov.in · 6 Oct 2017</span></li>
+<li><a href="https://www.sebi.gov.in/sebi_data/attachdocs/mar-2025/1741605370357.pdf" target="_blank" rel="noopener">SEBI (Mutual Funds) Regulations 1996, as amended</a><span class="meta">sebi.gov.in · 4 Mar 2025</span></li>
+<li><a href="https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792659909505.pdf" target="_blank" rel="noopener">SEBI (Mutual Funds) Regulations, 2026</a><span class="meta">sebi.gov.in</span></li>
+<li><a href="https://www.sebi.gov.in/sebi_data/attachdocs/apr-2021/1619614807999.pdf" target="_blank" rel="noopener">SEBI: Key employees' pay in fund units</a><span class="meta">sebi.gov.in · 28 Apr 2021</span></li>
+<li><a href="https://www.business-standard.com/markets/mutual-fund/mfs-told-to-disclose-stress-test-reports-of-midcap-smallcap-schemes-124022901229_1.html" target="_blank" rel="noopener">MFs told to disclose stress tests for mid and small caps</a><span class="meta">Business Standard · 29 Feb 2024</span></li>
+<li><a href="https://cafemutual.com/news/industry/36520-sebi-cuts-expense-ratio-active-equity-funds-expense-ratio-now-ranges-between-095-and-210" target="_blank" rel="noopener">SEBI cuts expense ratio caps</a><span class="meta">Cafemutual</span></li>
+<li><a href="https://www.livemint.com/money/personal-finance/nippon-india-smallcap-fund-stops-taking-lump-sum-subscription-from-july-7-fresh-sips-to-continue-with-limits-11688651914503.html" target="_blank" rel="noopener">Nippon India Small Cap stops lump sums</a><span class="meta">Mint · Jul 2023</span></li>
+<li><a href="https://www.boimf.in/products/equity-funds/bank-of-india-small-cap-fund" target="_blank" rel="noopener">BOI Small Cap Fund page</a><span class="meta">boimf.in</span></li>
+<li><a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-september-2024.pdf" target="_blank" rel="noopener">BOI factsheet, September 2024</a><span class="meta">boimf.in</span></li>
+<li><a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-march-2026.pdf" target="_blank" rel="noopener">BOI factsheet, March 2026</a><span class="meta">boimf.in</span></li>
+<li><a href="https://www.boimf.in/docs/default-source/investorcorner/factsheets/factsheet-october-2026.pdf" target="_blank" rel="noopener">BOI factsheet, October 2026</a><span class="meta">boimf.in</span></li>
+<li><a href="https://www.boimf.in/docs/default-source/reports/addenda-notice/cessation-of-fm-and-change-in-fm-responsibilities---september-30-2024.pdf" target="_blank" rel="noopener">BOI addendum: Bhatia exit, Singh appointed</a><span class="meta">boimf.in · 30 Sep 2024</span></li>
+<li><a href="https://www.valueresearchonline.com/stories/222103/alok-singh-boi-investment-mutual-fund-interview/" target="_blank" rel="noopener">Alok Singh interview</a><span class="meta">Value Research · 4 Oct 2024</span></li>
+<li><a href="https://www.moneycontrol.com/news/business/personal-finance/small-cap-vs-large-cap-funds-are-small-caps-overvalued-or-justified-by-faster-earnings-growth-14011624.html" target="_blank" rel="noopener">Small caps: PEG over P/E</a><span class="meta">Moneycontrol · 21 Aug 2026</span></li>
+<li><a href="https://mf.vipulanand.in/reports/daily/2026-11-25/" target="_blank" rel="noopener">Fatail's daily report, 25 Nov 2026</a><span class="meta">mf.vipulanand.in · 25 Nov 2026</span></li>
+<li><a href="https://api.mfapi.in/mf/145678" target="_blank" rel="noopener">NAV history, BOI Small Cap Direct Growth</a><span class="meta">mfapi.in</span></li>
+</ul>
+</section>
+</article>
+<footer>Research only, not investment advice.</footer>
+</main>
+</body>
+</html>
